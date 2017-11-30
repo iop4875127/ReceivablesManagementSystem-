@@ -1,0 +1,213 @@
+@CHARSET "UTF-8";
+
+/*弹出窗口的table表*/
+ .modal_table {
+        width: 100%;
+        margin: 0 auto;
+        border: 1px solid #ddd;
+        border-collapse: collapse;
+        
+    }
+/*弹出窗口的table表的通用td*/
+    .modal_table td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        /*font-weight: bold;*/
+    }
+    .validate_error {
+        border: 1px solid red;
+    }
+/*主页面的tab顶部部分*/
+.table_header {
+    width: 1200px;
+    height: 75px;
+}
+/*主页面的tab标签页的ul部分*/
+.tabs_ulstyle{
+    list-style-type: none;
+    margin: 0px;
+    padding: 0px;
+    padding-left: 0px;
+    border-style: solid;
+    border-width: 0 0 1px 0;
+    height: 34px;
+    width: 100%;
+    margin-top: 7px;
+    border-color: #D4D4D4;
+}
+/*主页面的tab标签页的ul下的li*/
+.tabs_ulstyle li {
+  float: left;
+  display: inline-block;
+  margin: 0 0px -1px 0;
+  padding: 0;
+  position: relative;
+  border: 0;
+}
+/*主页面的tab标签页的ul下的li下的a标签*/
+.tabs_ulstyle li a.tabs-inner {
+  display: inline-block;
+  text-decoration: none;
+  margin: 0;
+  padding: 0 20px;
+  height: 34px;
+  line-height: 32px;
+  text-align: center;
+  white-space: nowrap;
+  border-top-width: 1px;
+  border-left-width:0px;
+  border-bottom-width: 1px;
+  border-right-width: 1px;
+  border-style: solid;
+  border-color: #d3dbde;
+  color: #777;
+}
+.tabs_ulstyle li a.tabs-inner:hover {
+    background: transparent;
+    color: #00438a;
+    filter: none;
+}
+/*主页面的tab标签页的ul下的li下选中的a标签*/
+.tabs_ulstyle li.tabs-selected a.tabs-inner {   
+  font-weight: bold;
+  outline: none;
+  border-top-width:2px;
+  height: 34px;
+  line-height: 32px;
+  border-bottom: 1px solid #ffffff;
+  border-color: #D4D4D4;
+  border-top-color: #0d7cbd;
+  background-color: #def2fc;
+  color: #000;
+  background: linear-gradient(to bottom,#def2fc 0,#ffffff 100%);
+  background-repeat: repeat-x;
+}
+/*弹出窗口的table表的标题行td*/
+.modal_table tr.td_title {
+    text-align: left;
+    background-color: #dcdcdc
+}
+
+/*弹出窗口的table表的字段名称td*/
+.modal_table td.td_name {
+   white-space: nowrap;
+   vertical-align: middle;
+   text-align: center;
+}
+/*弹出窗口的table表的textarea控件*/
+.modal_table textarea.td_textarea {
+  height: 50px;
+  overflow: hidden;
+  resize:none;
+  width:100%;
+}
+/*弹出窗口的table表的input控件*/
+.modal_table input.td_input {
+  width:100%;
+}
+.tab_audit{
+  border-top:none;
+  text-align:center;
+  width: 100%;
+  margin: 0 auto;
+  border: 1px solid #ddd;
+  border-collapse: collapse;
+}
+.modal_table textarea.td_audit {
+ resize:none;
+ width:100%;
+}
+.td_right {
+    width: 15%;
+    text-align: right;
+}
+.modal_table font {
+     color: red;
+}
+/*td的宽度*/
+/*不同宽度的td*/
+.td_4 {
+	width: 4%;
+}
+.td_5 {
+	width: 5%;
+}
+.td_7 {
+	width: 7%;
+}
+.td_8 {
+	width: 8%;
+}
+.td_9 {
+	width: 9%;
+}
+.td_10 {
+	width: 10%;
+}
+.td_11 {
+	width: 11%;
+}
+.td_12 {
+	width: 12%;
+}
+.td_13 {
+	width: 13%;
+}
+.td_14 {
+	width: 14%;
+}
+.td_15 {
+	width: 15%;
+}
+.td_16 {
+	width: 16%;
+}
+.td_17 {
+	width: 17%;
+}
+.td_18 {
+	width: 18%;
+}
+.td_20 {
+	width: 18%;
+}
+.td_24 {
+	width: 24%;
+}
+.td_26 {
+	width: 26%;
+}
+.td_27 {
+	width: 27%;
+}
+.td_30 {
+	width: 30%;
+}
+.td_33 {
+	width: 33%;
+}
+.td_35 {
+	width: 35%;
+}
+.td_38 {
+	width: 38%;
+}
+.td_40 {
+	width: 40%;
+}
+.td_60 {
+	width: 40%;
+}
+.td_67 {
+	width: 67%;
+}
+.td_70 {
+	width: 70%;
+}
+.file_style {
+    border: 1px solid #FFF;
+    width: 100%;
+}
+.right-north {
+     height: 45px;
+}

@@ -1,0 +1,344 @@
+﻿@{
+    ViewBag.Title = "零件尺寸检测";
+    Layout = "~/Views/Shared/_IframeLayout.cshtml";
+}
+<link rel="stylesheet" type="text/css" href="~/Content/StoragesAndSupplies.css" />
+<div data-options="region:'north'" border="false" class="right-north">
+    <ul class="tab_ul">
+
+        <li>
+            <a href="@Url.Action("SolenoidValveInput", "SolenoidValveInput")" class="tab_a">
+                <span class="tabs-title">电磁阀投入</span><span class="tabs-icon"></span>
+            </a>
+        </li>
+        <li class="tab_li_selected">
+            <a href="@Url.Action("PartSizeDetection", "PartSizeDetection")" class="tab_a">
+                <span class="tabs-title">零件尺寸检测</span><span class="tabs-icon"></span>
+            </a>
+        </li>
+        <li>
+            <a href="@Url.Action("ComponentAssembly", "ComponentAssembly")" class="tab_a">
+                <span class="tabs-title">零组件装配</span><span class="tabs-icon"></span>
+            </a>
+        </li>
+
+    </ul>
+</div>
+<div data-options="region:'center'" border="false">
+    <div class="easyui-layout" fit="true">
+        <form action="">
+            <div id="cc" data-options="region:'north'" border="false" class="search">
+                <div class="search-page">
+                    <div class="warp-from">
+                        <!--搜索区域-->
+                        <div class="search_div">
+                            <div class="search_text">检测状态</div>
+                            <div class="search_input">
+                                <select name="" id="queryTrainingOrientation" class="input_style input_width input_height">
+                                    <option value="0">待检测</option>
+                                    <option value="1">已检测</option>
+
+                                </select>
+                            </div>
+                        </div>
+                        <div class="search_div">
+                            <div class="search_text">批号</div>
+                            <div class="search_input">
+                                <input type="text" id="txtSearchPartLot" name="textfield" class="input_style input_width input_height" />
+                            </div>
+                        </div>
+                        <div class="search_div">
+                            <div class="search_text">产品序号</div>
+                            <div class="search_input">
+                                <input type="text" id="txtSearchProductSerialNumber" name="textfield" class="input_style input_width input_height" />
+                            </div>
+                        </div>
+
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+                <!--按钮区域-->
+                <div class="tools">
+                    <ul class="toolbar">
+
+                        <li id="Edit"><a href="#"><span><img src="~/images/icon/export.png" alt="编辑" /></span>编辑</a></li>
+                        <li id="View"><a href="#"><span><img src="~/images/icon/export.png" alt="查看" /></span>查看</a></li>
+                        <li id="ExportExcel"><a href="#"><span><img src="~/images/icon/export.png" alt="导出excel" /></span>导出excel</a></li>
+                    </ul>
+                    <ul class="toolbar1">
+                        <li><input name="button" type="button" value="点击查询" class="buttons" id="btnSearch" /></li>
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+            <div data-options="region:'center'" border="false" class="reginon-margin">
+                <table id="tblPartDetection" class="easyui-datagrid table"
+                       data-options="url:'',method:'get',remoteSort:false,rownumbers:'true',border:false,singleSelect:true,fit:true,fitColumns:true,striped:true,pagination:true,pageSize:10"></table>
+            </div>
+
+        </form>
+    </div>
+</div>
+<!--编辑窗口-->
+<div id="editPartDetectiveModal" class="easyui-window" hidden>
+    <div class="tip-div">
+        <form id="editPartDetectiveForm">
+            <div class="wrap-page">
+                <h2 style="border-top: 0;">基础信息</h2>s
+                <div class="input-page">
+                    <div class="search_div" hidden>
+                        <div class="search_input">
+                            <input type="text" name="Id" id="txtEditId" class="input_style input_width input_height">
+                        </div>
+                        <div class="search_input">
+                            <input type="text" name="PartDetectionState" id="txtEditPartDetectionStatus" class="input_style input_width input_height">
+                        </div>
+                    </div>
+                </div>
+                <div class="input-page">
+                    <div class="search_div">
+                        <div class="input_text input_text_width_80 input_right">
+                            <span class="input-required ">*</span>&nbsp;零件批号
+                        </div>
+                        <div class="search_input">
+                            <input type="text" name="PartLot" id="txtEditPartLot" class="input_style input_width2 input_height" readonly>
+                        </div>
+                    </div>
+
+                    <div class="clearfix"></div>
+                </div>
+                <div class="input-page">
+                    <div class="search_div">
+                        <div class="input_text input_text_width_80 input_right">
+                            <span class="input-required ">*</span>&nbsp;产品序号
+                        </div>
+                        <div class="search_input">
+                            <input type="text" name="ProductSerialNumber" id="txtEditProductSerialNumber" class="input_style input_width2 input_height" readonly>
+                        </div>
+                    </div>
+                    <div class="search_div">
+                        <div class="input_text input_text_width_80 input_right">
+                            <span class="input-required "></span>&nbsp;装配公式
+                        </div>
+                        <div class="search_input">
+                            <input type="text" name="AssemblyFormula" id="txtEditAssemblyFormula" class="input_style input_width2 input_height" readonly>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="input-page">
+                    <div class="search_div">
+                        <div class="input_text input_text_width_80 input_right">
+                            <span class="input-required "></span>&nbsp;装配系数
+                        </div>
+                        <div class="search_input">
+                            <input type="text" name="AssemblyFactor" id="txtEditAssemblyFactor" class="input_style input_width2 input_height" readonly>
+                        </div>
+                    </div>
+
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+            <div class="wrap-page">
+                <h2 style="border-top: 0;">零件参数</h2>
+                <div class="input-page">
+                    <div class="search_div">
+                        <div class="input_text input_text_width_160 input_right">电磁铁深度/铁芯长度L1</div>
+                        <div class="search_input">
+                            <input type="text" name="CoreLength" id="txtEditCoreLength" class="input_style input_width2 input_height">
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="input-page">
+                    <div class="search_div">
+                        <div class="input_text input_text_width_160 input_right">铁芯高度h</div>
+                        <div class="search_input">
+                            <input type="text" name="CoreHeight" id="txtEditCoreHeight" class="input_style input_width2 input_height">
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="input-page">
+                    <div class="search_div">
+                        <div class="input_text input_text_width_160 input_right">铁芯盲孔深H</div>
+                        <div class="search_input">
+                            <input type="text" name="CoreDeepHole" id="txtEditCoreDeepHole" class="input_style input_width2 input_height">
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="input-page">
+                    <div class="search_div">
+                        <div class="input_text input_text_width_160 input_right">压簧选配值</div>
+                        <div class="search_input">
+                            <input type="text" name="MatchLowerLimit" id="txtEditMatchLowerLimit" class="input_style input_width input_height">
+                            <label>——</label>
+                            <input type="text" name="MatchUpperLimit" id="txtEditMatchUpperLimit" class="input_style input_width input_height">
+                        </div>
+                    </div>
+                    <div class="input_text input_text_width_160 input_right">零件尺寸为：</div>
+                    <div class="search_input">
+                        <input type="text" name="AssemblyDimensions" id="txtEditAssemblyDimensions" class="input_style input_width2 input_height">
+                    </div>
+                    <div class="input_text input_text_width_160 input_right">校块大小：</div>
+                    <div class="search_input">
+                        <input type="text" name="BlockSize" id="txtEditBlockSize" class="input_style input_width2 input_height">
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+
+            </div>
+
+            <div class="wrap-page" style="border-bottom: none;">
+                <div class="input-page">
+                    <div style="text-align: center;">
+                        <a id="saveEdit" class="button-bc button-bc-width"><i class="fa fa-floppy-o fa-fw"></i>&nbsp;确定保存</a>
+                        <a id="cancelEdit" class="button-qx button-bc-width">取消</a>
+                    </div>
+                </div>
+            </div>
+            <div class="tip-page">
+                <div class="tip-page-info">
+                    <strong>温馨提示：“<span class="input-required">*</span>”必填项！</strong>
+                </div>
+                <div class="tip_icon">
+                    <img src="~/images/xiaolian.png" alt=""/>
+                </div>
+            </div>
+        </form>
+    </div>
+
+</div>
+<!--查看窗口-->
+<div id="viewPartDetectiveModal" class="easyui-window" hidden>
+    <div class="tip-div">
+        <form id="viewPartDetectiveForm">
+            <div class="wrap-page">
+                <h2 style="border-top: 0;">基础信息</h2>
+                <div class="input-page">
+                    <div class="search_div" hidden>
+                        <div class="search_input">
+                            <input type="text" name="Id" id="txtViewId" class="input_style input_width input_height">
+                        </div>
+                        <div class="search_input">
+                            <input type="text" name="PartDetectionStatus" id="txtViewPartDetectionStatus" class="input_style input_width input_height">
+                        </div>
+                    </div>
+                </div>
+                <div class="input-page">
+                    <div class="search_div">
+                        <div class="input_text input_text_width_80 input_right">
+                            <span class="input-required ">*</span>&nbsp;零件批号
+                        </div>
+                        <div class="search_input">
+                            <input type="text" name="PartLot" id="txtViewPartLot" class="input_style input_width2 input_height" readonly>
+                        </div>
+                    </div>
+
+                    <div class="clearfix"></div>
+                </div>
+                <div class="input-page">
+                    <div class="search_div">
+                        <div class="input_text input_text_width_80 input_right">
+                            <span class="input-required ">*</span>&nbsp;产品序号
+                        </div>
+                        <div class="search_input">
+                            <input type="text" name="ProductSerialNumber" id="txtViewProductSerialNumber" class="input_style input_width2 input_height" readonly>
+                        </div>
+                    </div>
+                    <div class="search_div">
+                        <div class="input_text input_text_width_80 input_right">
+                            <span class="input-required "></span>&nbsp;装配公式
+                        </div>
+                        <div class="search_input">
+                            <input type="text" name="AssemblyFormula" id="txtViewAssemblyFormula" class="input_style input_width2 input_height" readonly>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="input-page">
+                    <div class="search_div">
+                        <div class="input_text input_text_width_80 input_right">
+                            <span class="input-required "></span>&nbsp;装配系数
+                        </div>
+                        <div class="search_input">
+                            <input type="text" name="AssemblyFactor" id="txtViewAssemblyFactor" class="input_style input_width2 input_height" readonly>
+                        </div>
+                    </div>
+
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+            <div class="wrap-page">
+                <h2 style="border-top: 0;">零件参数</h2>
+                <div class="input-page">
+                    <div class="search_div">
+                        <div class="input_text input_text_width_160 input_right">电磁铁深度/铁芯长度L1</div>
+                        <div class="search_input">
+                            <input type="text" name="CoreLength" id="txtViewCoreLength" class="input_style input_width2 input_height">
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="input-page">
+                    <div class="search_div">
+                        <div class="input_text input_text_width_160 input_right">铁芯高度h</div>
+                        <div class="search_input">
+                            <input type="text" name="CoreHeight" id="txtViewCoreHeight" class="input_style input_width2 input_height">
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="input-page">
+                    <div class="search_div">
+                        <div class="input_text input_text_width_160 input_right">铁芯盲孔深H</div>
+                        <div class="search_input">
+                            <input type="text" name="CoreDeepHole" id="txtViewCoreDeepHole" class="input_style input_width2 input_height">
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="input-page">
+                    <div class="search_div">
+                        <div class="input_text input_text_width_160 input_right">压簧选配值</div>
+                        <div class="search_input">
+                            <input type="text" name="MatchLowerLimit" id="txtViewMatchLowerLimit" class="input_style input_width input_height">
+                            <label>——</label>
+                            <input type="text" name="MatchUpperLimit" id="txtViewMatchUpperLimit" class="input_style input_width input_height">
+                        </div>
+                    </div>
+                    <div class="input_text input_text_width_160 input_right">零件尺寸为：</div>
+                    <div class="search_input">
+                        <input type="text" name="AssemblyDimensions" id="txtViewAssemblyDimensions" class="input_style input_width2 input_height">
+                    </div>
+                    <div class="search_input">
+                        <input type="text" name="BlockSize" id="txtViewBlockSize" class="input_style input_width2 input_height" >
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+
+            </div>
+
+            <div class="wrap-page" style="border-bottom: none;">
+                <div class="input-page">
+                    <div style="text-align: center;">
+                        <a id="cancelView" class="button-qx button-bc-width">取消</a>
+                    </div>
+                </div>
+            </div>
+            <div class="tip-page">
+                <div class="tip-page-info">
+                    <strong>温馨提示：“<span class="input-required">*</span>”必填项！</strong>
+                </div>
+                <div class="tip_icon">
+                    <img src="~/images/xiaolian.png" alt="" />
+                </div>
+            </div>
+        </form>
+    </div>
+
+</div>
+@section Scripts {
+    <script src="~/Scripts/App/ProducePlan/PartSizeDetection.js"></script>
+}  

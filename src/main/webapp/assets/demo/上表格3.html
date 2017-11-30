@@ -1,0 +1,110 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>zos 主界面</title>
+<link rel="stylesheet" type="text/css" href="../css/easyui.css"/>
+<link rel="stylesheet" type="text/css" href="../css/right.css"/>
+
+<script type="text/javascript" src="../script/jquery.min.js"></script>
+<script type="text/javascript" src="../script/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="../script/menu.js"></script>
+<script type="text/javascript" src="../script/datagrid-detailview.js"></script>
+<script>
+/* 窗口自适应 */
+        $(window).resize(function () {
+            $('#tt').datagrid('resize');
+			
+        });
+		$(function(){
+			$('#tt').datagrid({
+				view: detailview,
+				detailFormatter:function(index,row){
+					return '<div style="padding:0px"><table id="ddv-' + index + '"></table></div>';
+				},
+				onExpandRow: function(index,row){
+					$('#ddv-'+index).datagrid({
+						url:'datagrid_data2.json?itemid='+row.itemid,
+						fitColumns:true,
+						singleSelect:false,
+						pagination:false,
+						rownumbers:true,
+						loadMsg:'',
+						height:'auto',
+						columns:[[
+							{field:'status4',title:'Order ID',width:200},
+							{field:'status3',title:'Quantity',width:100,align:'right'},
+							{field:'status2',title:'Quantity',width:100,align:'right'},
+							{field:'productid',title:'Unit Price',width:100,align:'right'}
+						]],
+						onResize:function(){
+							$('#tt').datagrid('fixDetailRowHeight',index);
+						},
+						onLoadSuccess:function(){
+							 $(".datagrid-header-check").html(""); 
+							setTimeout(function(){
+								$('#tt').datagrid('fixDetailRowHeight',index);
+							},0);
+						}
+						
+					});
+					$('#tt').datagrid('fixDetailRowHeight',index);
+					
+				}
+			});
+		});
+
+	</script>
+</head>
+
+<body class="easyui-layout" fit="true">
+<form action="">
+	 <div id="cc" data-options="region:'north'" border="false" class="search">
+		 <div class="tools">
+            <ul class="toolbar" style="margin-top: -7px;">
+                <li class="tool-active"><a  href="javascript:void(0);" onclick="window.parent.$('#tck').window('open')"><span><img src="../images/icon/add.png" /></span>添加</a></li>
+                        <li><span><img src="../images/icon/edit.png" /></span>修改</li>
+                        <li><span><img src="../images/icon/delete.png" /></span>删除</li>
+                        <li><span><img src="../images/icon/check.png" /></span>检查</li>
+                        <li><a href="#" class="easyui-menubutton" data-options="menu:'#mm2'"><img src="../images/icon/print.png" />打印</a></li>
+		                <li><a href="#" class="easyui-menubutton" data-options="menu:'#mm3'"><img src="../images/icon/pur_modi.png" />采购订单</a></li>
+        		        <li><span><img src="../images/icon/approval.png" /></span>申请审批</li>
+        		        <li><span><img src="../images/icon/obsolete.png" /></span>废除审批</li>
+                        <div id="mm2" style="width:100px;">
+                            <div>普通打印</div>
+                            <div>询价单</div>
+                        </div>
+                        <div id="mm3" style="width:100px;">
+                            <div>生成</div>
+                            <div>删除</div>
+                            <div>订单明细</div>
+                        </div>
+
+            </ul>
+
+            <div class="clearfix"></div>
+        </div>     
+        
+    </div>
+    <div data-options="region:'center'" border="false"  class="reginon-margin">
+    
+     <table id="tt" class="easyui-datagrid table"
+               data-options="url:'datagrid_data1.json',method:'get',remoteSort:false,rownumbers:'true',border:false,singleSelect:true,fit:true,fitColumns:true,striped:true,pagination:true,pageSize:10">
+      <thead>
+        <tr>
+          <th data-options="field:'itemid',sortable:'true'" width="10">公司名称</th>
+          <th data-options="field:'productid'" width="10">计划单号</th>
+          <th data-options="field:'listprice',sortable:'true',align:'right' " width="25">计划名称</th>
+          <th data-options="field:'unitcost',align:'right'" width="20">编制日期</th>
+          <th data-options="field:'attr1'" width="10">编制人</th>
+          <th data-options="field:'status',align:'center'" width="15">申请审批</th>
+          <th data-options="field:'status1',align:'center'" width="15">是否完毕</th>
+          <th data-options="field:'status2',align:'center'" width="15">订单发送</th>
+        </tr>
+      </thead>
+    </table>
+    </div>
+ </form>
+</body>
+</html>
+

@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>zos 主界面</title>
+<link rel="stylesheet" type="text/css" href="../css/easyui.css"/>
+<link rel="stylesheet" type="text/css" href="../css/right.css"/>
+
+<script type="text/javascript" src="../script/jquery.min.js"></script>
+<script type="text/javascript" src="../script/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="../script/easyui-window-fix.js"></script>
+</head>
+<body class="easyui-layout">
+	<div data-options="region:'center'" border="false" >
+     <div id="tabs" class="easyui-tabs" data-options="fit:true,plain:true">
+        <div title="选项卡" style="overflow:visible">
+        	 <iframe src="上表格.html" width="100%" height="50%" frameborder="0"></iframe>
+    		 <iframe src="下表格.html" width="100%" height="50%" frameborder="0"></iframe>
+        </div>
+        <div title="自定义"  style="overflow:visible">
+ 			 <iframe src="上表格.html" width="100%" height="50%" frameborder="0"></iframe>
+    		 <iframe src="下表格.html" width="100%" height="50%" frameborder="0"></iframe>        
+    	</div>
+      </div>
+          
+    </div>
+</body>
+
+</html>
+
+<div id="tck" class="easyui-window">
+	
+</div>
+<div id="tip" class="easyui-window tip-content" >
+	<div class="tip-div">
+    	<img src="../images/tip_icon.png" />
+        <span class="spans">当前合同设备订货 <font class="font-20"> ”非空 ”</font>，不能导入！</span>
+        <div class="clearfix"></div>
+    </div>
+    <div class="tip-button">
+     	<input name="button" type="button" value="我知道了" class="buttons"/>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(document).ready(function () {
+	//重新加载iframe
+	   $('#tabs').tabs({
+		onSelect:function(title,index){
+				var tab = $('#tabs').tabs('getSelected');
+				var $frames=$(tab).children("iframe");
+				if($frames){	
+					$frames.each(function(){
+						var url= $(this).attr("src");
+						$(this).attr("src",url);	
+					});
+				}
+			}   
+			
+		});
+
+    });
+$('#tck').window({
+		width:960,
+		height:500,
+		modal:true,
+		closed:true,
+		minimizable:false,
+		collapsible:false,
+		maximizable:false,
+		resizable:false,
+		title:'iframe连接页面显示',
+		content:'<iframe src=\"添加.htm\l" frameborder=\"0\" scrolling=\"auto\" width=\"100%\" height=\"100%\" ></iframe>'
+	});
+    $('#tip').window({
+        width: 526,
+        height: 216,
+        modal: true,
+        closed: true,
+        minimizable: false,
+        collapsible: false,
+        maximizable: false,
+        title: '警告提示框'
+    });
+</script>

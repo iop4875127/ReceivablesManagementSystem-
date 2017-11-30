@@ -1,0 +1,38 @@
+[{
+	"id":1,
+	"text":"树形菜单",
+	"children":[{
+		"id":11,
+		"text":"皖0001桐城市汽车综合性能检测站桐城市汽车综合性能检测站"
+	},{
+		"id":12,
+		"text":"皖0006凤阳县公安交警大队",
+		"children":[{
+			"id":121,
+			"text":"Intel"
+		},{
+			"id":122,
+			"text":"Java",
+			"attributes":{
+				"p1":"Custom Attribute1",
+				"p2":"Custom Attribute2"
+			}
+		},{
+			"id":123,
+			"text":"Microsoft Office"
+		},{
+			"id":124,
+			"text":"Games",
+			"checked":true
+		}]
+	},{
+		"id":13,
+		"text":"index.html"
+	},{
+		"id":14,
+		"text":"about.html"
+	},{
+		"id":15,
+		"text":"welcome.html"
+	}]
+}]

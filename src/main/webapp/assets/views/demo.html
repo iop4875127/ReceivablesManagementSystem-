@@ -1,0 +1,314 @@
+<link rel="stylesheet" type="text/css" href="/assets/css/easyui.css"/>
+<link rel="stylesheet" type="text/css" href="/assets/css/right.css"/>
+
+<script type="text/javascript" src="/assets/js/jquery.min.js"></script>
+<script type="text/javascript" src="/assets/js/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="/assets/js/menu.js"></script>
+<script type="text/javascript" src="/assets/js/easyui-window-fix.js"></script>
+<script>
+/* 窗口自适应 */
+        $(window).resize(function () {
+            $('#tt').datagrid('resize');
+			
+        });
+		
+</script>
+<body class="easyui-layout" fit="true">
+<form action="">
+	 <div id="cc" data-options="region:'north'" border="false" class="search">
+         <div class="search-page">
+           
+            <!--搜索区域-->
+            <div class="warp-from">
+          
+            <div class="search_div">
+                <div class="search_text">禁止修改</div>
+                <div class="search_input">
+                  <input type="text" name="textfield" value="16101703" id="textfield" class="bottom_style input_width input_height" disabled>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+            <!--搜索分区线 start-->
+            <div class="input-page search_line"></div>
+            <!--搜索分区线 end-->
+            
+            <div class="search_div">
+                <div class="search_text">下拉菜单</div>
+                <div class="search_input border_red">
+                  <select class="input_style input_width input_height">
+                    <option >下拉菜单1</option>
+                    <option >下拉菜单2</option>
+                    <option >下拉菜单3</option>
+                  </select>
+                </div>
+            </div>
+            <div class="search_div">
+                <div class="search_text">日期控件</div>
+                <div class="search_input">
+                    <input class="easyui-datebox input_style input_width input_height" data-options="formatter:myformatter,parser:myparser,editable:false"></input>
+                </div>
+            </div>
+            <div class="search_div">
+                <div class="search_text_65" style="text-align:center">-</div>
+                <div class="search_input">
+                    <input class="easyui-datebox input_style input_width input_height" data-options="formatter:myformatter,parser:myparser,editable:false"></input>
+                </div>
+            </div>
+            <div class="search_div">
+                <div class="search_text">文本框</div>
+                <div class="search_input">
+                  <input type="text" name="textfield" id="textfield" class="input_style input_width input_height">
+                </div>
+            </div>  
+            <div class="search_div">
+                <div class="search_text">文本框点击</div>
+                <div class="search_input">
+                  <input type="text" name="textfield" id="textfield" class="input_style input_width input_height click_input_bg">
+                </div>
+            </div>   
+            <div class="search_div">
+                <div class="search_text">下任务人</div>
+                <div class="search_input">
+                 <input type="text" name="textfield" id="textfield" class="input_style2 input_width input_height">
+                </div>
+            </div>
+            <div class="search_div">
+                <div class="search_text">
+                  <input type="checkbox"  style=" display:inline-block; margin-top:6px;">
+                </div>
+                <div class="search_input search_LH">
+                   复选框
+                </div>
+            </div>
+            <div class="clearfix"></div>
+              <!--搜索分区线 start-->
+            <div class="input-page search_line"></div>
+            <!--搜索分区线 end-->
+            <div class="search_div">
+                <div class="search_text">下拉菜单</div>
+                <div class="search_input border_red">
+                  <select class="input_style input_width input_height">
+                    <option >下拉菜单1</option>
+                    <option >下拉菜单2</option>
+                    <option >下拉菜单3</option>
+                  </select>
+                </div>
+            </div>
+            <div class="search_div">
+                <div class="search_text">日期控件</div>
+                <div class="search_input">
+                    <input class="easyui-datebox input_style input_width input_height" data-options="formatter:myformatter,parser:myparser,editable:false"></input>
+                </div>
+            </div>
+            <div class="search_div">
+                <div class="search_text_65" style="text-align:center">-</div>
+                <div class="search_input">
+                    <input class="easyui-datebox input_style input_width input_height" data-options="formatter:myformatter,parser:myparser,editable:false"></input>
+                </div>
+            </div>
+            <div class="search_div">
+                <div class="search_text">文本框</div>
+                <div class="search_input">
+                  <input type="text" name="textfield" id="textfield" class="input_style input_width input_height">
+                </div>
+            </div>  
+            <div class="search_div">
+                <div class="search_text">文本框点击</div>
+                <div class="search_input">
+                  <input type="text" name="textfield" id="textfield" class="input_style input_width input_height click_input_bg">
+                </div>
+            </div>   
+            <div class="search_div">
+                <div class="search_text">下任务人</div>
+                <div class="search_input">
+                 <input type="text" name="textfield" id="textfield" class="input_style2 input_width input_height">
+                </div>
+            </div>
+            <div class="search_div">
+                <div class="search_text">
+                  <input type="checkbox"  style=" display:inline-block; margin-top:6px;">
+                </div>
+                <div class="search_input search_LH">
+                   复选框
+                </div>
+            </div>
+            <div class="clearfix"></div>
+            </div>
+           
+         </div>
+		 <div class="tools">
+            <ul class="toolbar">
+                <li class="tool-active"><a  href="javascript:void(0);" onclick="$('#tck').window('open')"><span><img src="/assets/images/icon/add.png" /></span>二级菜单</a></li>
+              
+                <li><a href="#" class="easyui-menubutton" data-options="menu:'#mm2'"><img src="/assets/images/icon/print.png" />二级菜单</a></li>
+                <li class="tool-active"><a  href="javascript:void(0);" onclick="$('#sucess').window('open')"><span><img src="/assets/images/icon/tips.png" /></span>保存成功</a></li>
+                <li class="tool-active"><a  href="javascript:void(0);" onclick="$('#mark').window('open')"><span><img src="/assets/images/icon/tips.png" /></span>保存失败</a></li>
+                <li class="tool-active"><a  href="javascript:void(0);" onclick="$('#Addtab').window('open')"><span><img src="/assets/images/icon/tips.png" /></span>添加选项卡</a></li>
+                <li class="tool-active"><a  href="javascript:void(0);" onclick="$('#tabtable').window('open')"><span><img src="/assets/images/icon/tips.png" /></span>选项卡上下表格</a></li>
+                   <li class="tool-active"><a  href="javascript:void(0);" onclick="$('#Adddjmb').window('open')"><span><img src="/assets/images/icon/tips.png" /></span>新增答卷模板</a></li>
+                 <li class="tool-active"><a  href="javascript:void(0);" onclick="OpenWindow()"><span><img src="/assets/images/icon/tips.png" /></span>新增测评问卷</a></li>
+                        <div id="mm2" style="width:100px;">
+                            <div>三级菜单1</div>
+                            <div>三级菜单2</div>
+                        </div>
+
+            </ul>
+
+            <ul class="toolbar1">
+           	   <input name="button" type="button" value="点击重置" class="Reset_button"/>
+           	   <input name="button" type="button" value="点击查询" class="buttons"/>
+            </ul>
+            <div class="clearfix"></div>
+        </div>     
+        
+    </div>
+    <div data-options="region:'center'" border="false"  class="reginon-margin">
+     <table id="tt" class="easyui-datagrid table"
+               data-options="url:'datagrid_data1.json',method:'get',remoteSort:false,rownumbers:'true',border:false,singleSelect:true,fit:true,fitColumns:true,striped:true,pagination:true,pageSize:10">
+      <thead>
+        <tr>
+          <th data-options="field:'itemid',sortable:'true'" width="12%">名称</th>
+          <th data-options="field:'productid'" width="12%">名称</th>
+          <th data-options="field:'listprice',sortable:'true',align:'right' " width="12%">名称</th>
+          <th data-options="field:'unitcost',align:'right'" width="12%">名称</th>
+          <th data-options="field:'attr1'" width="12%">名称</th>
+          <th data-options="field:'status',align:'center'" width="12%">名称</th>
+          <th data-options="field:'status1',align:'center'" width="11%">名称</th>
+          <th data-options="field:'status2',align:'center'" width="11%">名称</th>
+          <th data-options="field:'_operate',align:'center',formatter:formatOper" width="4%">操作</th>  
+        </tr>
+      </thead>
+    </table>
+    </div>
+ </form>
+</body>
+<div id="tck" class="easyui-window"></div>
+<div id="cpwj"></div>
+<div id="Addtab" class="easyui-window"></div>
+<div id="Adddjmb" class="easyui-window"></div>
+<div id="tabtable" class="easyui-window"></div>
+<div id="sucess" class="easyui-window tip-content" >
+	<div class="tip-div">
+    	<img src="/assets/images/tip_icon_succeed.png" />
+        <span class="tip_content">
+        	<span class="spans"><font class="font-30 font-green"> "保存成功" </font></span>
+        </span>
+        <div class="clearfix"></div>
+    </div>
+    <div class="tip-button">
+     	<input name="button" type="button" value="我知道了" class="buttons"/>
+    </div>
+</div>
+<div id="mark" class="easyui-window tip-content" >
+	<div class="tip-div">
+    	<img src="/assets/images/tip_icon_mistake.png" />
+        <span class="spans"><font class="font-30 input-required"> "保存失败" </font></span>
+        <div class="clearfix"></div>
+    </div>
+    <div class="tip-button">
+     	<input name="button" type="button" value="我知道了" class="buttons"/>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(document).ready(function () {
+	//重新加载iframe
+	   $('#tabs').tabs({
+		onSelect:function(title,index){
+				var tab = $('#tabs').tabs('getSelected');
+				var url= $(tab).children("iframe").attr("src");
+				$(tab).children("iframe").attr("src",url);
+			}   
+		});
+
+    });
+function formatOper(val,row,index){  
+    return '<a href="#" onclick="editUser('+index+')"><img src=\"/assets/images/icon/im_data.png\"></a>';  
+} 
+
+$('#tck').window({
+		width:960,
+		height:500,
+		modal:true,
+		closed:true,
+		minimizable:false,
+		collapsible:false,
+		maximizable:false,
+		resizable:false,
+		title:'iframe连接页面显示',
+		content:"<iframe src=\"添加.html\" frameborder=\"0\" scrolling=\"auto\" width=\"100%\" height=\"100%\" ></iframe>"
+	});
+$('#tabtable').window({
+		width:950,
+		height:600,
+		modal:true,
+		closed:true,
+		minimizable:false,
+		collapsible:false,
+		maximizable:false,
+		title:'选项卡上下表格',
+		content:"<iframe src=\"添加选项卡表格.html\" frameborder=\"0\" scrolling=\"auto\" width=\"100%\" height=\"100%\" ></iframe>"
+	});
+$('#Addtab').window({
+		width:950,
+		height:500,
+		modal:true,
+		closed:true,
+		minimizable:false,
+		collapsible:false,
+		maximizable:false,
+		resizable:false,
+		title:'添加页面选项卡',
+		content:"<iframe src=\"添加选项卡.html\" frameborder=\"0\" scrolling=\"auto\" width=\"100%\" height=\"100%\" ></iframe>"
+	});
+$('#Adddjmb').window({
+		width:600,
+		height:500,
+		modal:true,
+		closed:true,
+		minimizable:false,
+		collapsible:false,
+		maximizable:false,
+		resizable:false,
+		title:'添加页面选项卡',
+		content:"<iframe src=\"新增答卷模板.html\" frameborder=\"0\" scrolling=\"auto\" width=\"100%\" height=\"100%\" ></iframe>"
+	});
+
+$('#sucess').window({
+		width:526,
+		height:216,
+		modal:true,
+		closed:true,
+		minimizable:false,
+		collapsible:false,
+		maximizable:false,
+		resizable:false,
+		title:'警告提示框'
+	});
+$('#mark').window({
+		width:526,
+		height:216,
+		modal:true,
+		closed:true,
+		minimizable:false,
+		collapsible:false,
+		maximizable:false,
+		resizable:false,
+		title:'警告提示框'
+	});
+
+function OpenWindow() {
+        $('#cpwj').window({
+            width: 960,
+            height: 500,
+            modal: true,
+            closed: false,
+            minimizable: false,
+            collapsible: false,
+            maximizable: false,
+			resizable:false,
+            title: '新增测评问卷题',
+            content:"<iframe src=\"新增测评问卷.html\" frameborder=\"0\" scrolling=\"auto\" width=\"100%\" height=\"100%\" ></iframe>",
+        });
+    }
+</script>

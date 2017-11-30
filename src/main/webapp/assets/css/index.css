@@ -1,0 +1,305 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+html {
+	font-size: 100%;
+	height: 100%;
+}
+body {
+	background-color: #fff;
+	font-family: "微软雅黑 Light";
+	font-size: 14px;
+	-ms-text-size-adjust: 100%;
+	-webkit-text-size-adjust: 100%;
+	color: #515151;
+	-moz-osx-font-smoothing: grayscale;
+	-webkit-font-smoothing: antialiased !important;
+	min-width:1280px;
+}
+button, input, optgroup, select, textarea {
+	margin: 0;
+	font: inherit;
+	color: inherit;
+}
+button {
+	overflow: visible;
+}
+button, select {
+	text-transform: none;
+}
+button, html input[type="button"], input[type="reset"], input[type="submit"] {
+	-webkit-appearance: button;
+	cursor: pointer;
+}
+button[disabled], html input[disabled] {
+	cursor: default;
+}
+button::-moz-focus-inner, input::-moz-focus-inner {
+ padding: 0;
+ border: 0;
+}
+input {
+	line-height: normal;
+}
+input[type="checkbox"], input[type="radio"] {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	padding: 0;
+}
+input[type="number"]::-webkit-inner-spin-button, input[type="number"]::-webkit-outer-spin-button {
+ height: auto;
+}
+input[type="search"] {
+	-webkit-box-sizing: content-box;
+	-moz-box-sizing: content-box;
+	box-sizing: content-box;
+	-webkit-appearance: textfield;
+}
+input[type="search"]::-webkit-search-cancel-button, input[type="search"]::-webkit-search-decoration {
+ -webkit-appearance: none;
+}
+*, *:before, *:after {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box
+}
+ul li {
+	list-style: none;
+}
+a {
+	background-color: transparent;
+	text-decoration: none;
+}
+a:active, a:hover {
+	outline: 0;
+}
+/*公用 css*/
+.clearfix {
+	clear: both;
+}
+.pull-right {
+	float: right !important;
+}
+.pull-left {
+	float: left !important;
+}
+.hide {
+	display: none !important;
+}
+.show {
+	display: block !important;
+}
+.img-responsive {
+	display: block;
+	max-width: 100%;
+	height: auto;
+}
+/*头部 css*/
+.cs-north{
+	height:94px;
+	overflow:visible}
+#head {
+	background-color: #f7f7f7;
+	background: -webkit-linear-gradient(top, #f7f7f7 0, #eaeaea 70%);
+	background: -moz-linear-gradient(top, #f7f7f7 0, #eaeaea 70%);
+	background: -o-linear-gradient(top, #f7f7f7 0, #eaeaea 70%);
+	background: linear-gradient(to bottom, #f7f7f7 0, #eaeaea 70%);
+	background-repeat: repeat-x;
+ filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#f7f7f7, endColorstr=#eaeaea, GradientType=0);
+}
+#head {
+	border-bottom: 1px solid #0260c7;
+}
+.logo {
+	padding: 8px 5px 5px;
+	float: left;
+}
+.head-right {
+	float: right;
+}
+.plane-tool a {
+	background: url(../images/panle-tool.png) no-repeat top right;
+	height: 27px;
+	display: block;
+	padding: 5px 8px 0;
+	float: right;
+	border: 0 solid #F00;
+}
+.top-menu {
+	height: 30px;
+	line-height:30px;
+	margin: 0px 10px 0;
+}
+.top-menu-left, .top-menu-right {
+	height: 30px;
+	width: 50px;
+}
+.top-menu-left {
+	background: url(../images/top-menu.png) no-repeat 14px -3px;
+}
+.top-menu-right {
+	background: url(../images/top-menu.png) no-repeat -20px -35px;
+}
+.top-menu-center {
+	background: url(../images/top-menu.png) repeat-x left bottom;
+	height: 30px;
+}
+.top-menu-center a {
+	display: block;
+	float: left;
+	padding: 5px 4px 0;
+}
+/*一级菜单*/
+.navbar-blue {
+	background-color: #0c7cbc;
+	border-top: 1px solid #13b5dc;
+	border-bottom: 1px solid #0b6ea7;
+	padding: 0 10px;
+}
+.navbar-blue .navbar-nav > li > a {
+	color: #fff;
+	font-size: 100%;
+	font-weight: bold;
+	border: 1px solid transparent;
+}
+.navbar-blue .navbar-nav > li > a:hover, .navbar-blue .navbar-nav > li > a:focus {
+	color: #fefefe;
+	background: url(../images/menu_li_bg2.png) repeat-x top left;
+	-webkit-border-radius: 20px;
+	-moz-border-radius: 20px;
+	border-radius: 20px;
+	margin: 2px 0;
+	border: 1px solid #11a0d0;
+}
+.navbar-blue .navbar-nav > .active > a, .navbar-blue .navbar-nav > .active > a:hover {
+	color: #fefefe;
+	background: url(../images/menu_li_bg2.png) repeat-x top left;
+	-webkit-border-radius: 20px;
+	-moz-border-radius: 20px;
+	border-radius: 20px;
+	margin: 2px 0;
+	border: 1px solid #11a0d0;
+}
+.nav-justified {
+	width: 100%;
+	border-bottom: 0;
+}
+.nav-justified>li {
+	float: none
+}
+.nav-justified>li>a {
+	text-align: center
+}
+@media(min-width:768px) {
+	.nav-justified>li {
+		display: table-cell;
+		width: 1%
+	}
+}
+.nav > li > a {
+	display: block;
+	padding: 6px 12px;
+}
+/*左侧*/
+.cs-west{
+	width:166px;
+	background:#ededed;
+	border-right:1px solid #d7d7d7;}
+#mainnav-container {
+	position: absolute;
+	width: 166px;
+	left: 0;
+	padding-top: 110px;
+	top: 0;
+	bottom: 0;
+	z-index: 4;
+	min-height: 100%;
+	border-right:1px solid #d7d7d7;
+}
+#mainnav {
+	height: 100%;
+	background-color: #ededed;
+}
+#mainnav>*:not(.popover) .nano-pane {
+	display: none !important
+}
+.left_menu {
+
+	margin:0;
+	padding:0;
+}
+.left_menu li {
+	list-style:none;
+}
+.left_menu > li > a {
+	height:40px;
+	line-height:40px;
+	color:white;
+	display:block;
+	cursor:pointer;
+	background:url(../images/menu_li_line.png) repeat-x bottom left;
+	color:#000000;
+	font-size:12px;
+	font-weight:bold;
+	text-indent:40px;
+}
+.left_menu > li > a.nLien{
+	background:none;
+	}
+.left_menu li .dqian {
+	background:none
+}
+.left_menu li .xz {
+	background:url(../images/left_menu_b.jpg) no-repeat;
+	color:#/*F06A15*/000
+}
+.er {
+	display:none;
+	width:100%;
+	padding-bottom:15px;
+	background:url(../images/menu_li_line.png) repeat-x bottom left;
+}
+.er li {
+	width:100%;
+	height:35px;
+	line-height:35px;
+}
+.er li a {
+	display:block;
+	background: url(../images/jiantuo.png) no-repeat 40px 15px;
+	font-size: 12px;
+	font-weight:normal;
+	text-indent:55px;
+	color:#000;
+}
+.er li a:hover {
+	color:#0080cc;
+}
+.left_bottom {
+	position:absolute;
+	bottom:1px;
+	width:160px;
+	border-right:1px solid #cccccc;
+	background-color:#f2f2f2;
+}
+.left_bottom li {
+}
+.left_bottom img {
+	border:none!important;
+	background:none!important;
+	padding:0px !important;
+}
+.Li_bg{
+	background:url(../images/menu_li_bg2.png) repeat-x top left;
+	}
+.Li_jt{
+	background:url(../images/jiantuo_white.png) no-repeat 40px 15px;
+	color:#FFF;}
+
+/*底部*/
+.cs-south {
+	height:29px;
+	line-height:29px;
+	background:#0c6aa4;}

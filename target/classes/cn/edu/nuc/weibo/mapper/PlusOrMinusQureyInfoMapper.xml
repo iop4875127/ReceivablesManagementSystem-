@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.edu.nuc.weibo.dao.interfaces.ProjectManagement.PlusOrMinusManagement.PlusOrMinusInfo.PlusOrMinusQureyInfoMapper">
+
+<select id="queryByPage" parameterType="cn.edu.nuc.weibo.entity.searchObj.PlusOrMinusInfoSearchObj" resultMap="BaseResultMap">
+		
+		SELECT a.*,b.project_manager,d.customer_name
+		 FROM 	pm_plus_or_minus AS a
+	LEFT JOIN pm_project AS b ON a.project_no = b.project_no
+	LEFT JOIN bm_contract AS c ON a.contract_no = c.contract_no
+	LEFT JOIN cm_customer AS d ON c.customs_no = d.customer_no 
+		WHERE a.state > 0 AND b.state > 0 AND c.state > 0 AND d.state > 0 
+		<if test="contractNo != null">
+			AND a.contract_no LIKE CONCAT('%',#{contractNo},'%')  
+		</if>
+		<if test="projectNo != null">
+			AND a.project_no LIKE CONCAT('%',#{projectNo},'%') 
+		</if>
+		<if test="projectManager != null">
+			AND b.projec_manager LIKE CONCAT('%',#{projectManager},'%') 
+		</if>
+		<if test="customerName != null">
+			AND d.custome_name LIKE CONCAT('%',#{customerName},'%') 
+		</if>
+		<if test="projectAddress != null">
+			AND b.project_address LIKE CONCAT('%',#{projectAddress},'%') 
+		</if>
+		<if test="startNumber != null">
+			<if test="endNumber != null">
+			LIMIT #{startNumber,jdbcType=INTEGER},#{endNumber,jdbcType=INTEGER}
+			</if>
+		</if>
+	</select>
+
+<select id="queryCount" parameterType="cn.edu.nuc.weibo.entity.searchObj.PlusOrMinusInfoSearchObj" resultType="java.lang.Integer">
+		SELECT COUNT(*) FROM(
+		SELECT a.*,b.project_manager,d.customer_name
+		 FROM 	pm_plus_or_minus AS a
+	LEFT JOIN pm_project AS b ON a.project_no = b.project_no
+	LEFT JOIN bm_contract AS c ON a.contract_no = c.contract_no
+	LEFT JOIN cm_customer AS d ON c.customs_no = d.customer_no 
+		WHERE a.state > 0 AND b.state > 0 AND c.state > 0 AND d.state > 0 
+		<if test="contractNo != null">
+			AND a.contract_no LIKE CONCAT('%',#{contractNo},'%')  
+		</if>
+		<if test="projectNo != null">
+			AND a.project_no LIKE CONCAT('%',#{projectNo},'%') 
+		</if>
+		<if test="projectManager != null">
+			AND b.projec_manager LIKE CONCAT('%',#{projectManager},'%') 
+		</if>
+		<if test="customerName != null">
+			AND d.custome_name LIKE CONCAT('%',#{customerName},'%') 
+		</if>
+		<if test="projectAddress != null">
+			AND b.project_address LIKE CONCAT('%',#{projectAddress},'%') 
+		</if>
+		) AS h
+	</select>
+
+	<resultMap id="BaseResultMap" type="cn.edu.nuc.weibo.entity.VO.ProjectManagement.PlusOrMinusManagement.PlusOrMinusInfo.PlusOrMinusPageVO">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="project_no" jdbcType="VARCHAR" property="projectNo" />
+    <result column="contract_no" jdbcType="VARCHAR" property="contractNo" />
+    <result column="contract_period" jdbcType="INTEGER" property="contractPeriod" />
+    <result column="plus_or_minus_content" jdbcType="VARCHAR" property="plusOrMinusContent" />
+    <result column="plus_or_minus_money" jdbcType="DECIMAL" property="plusOrMinusMoney" />
+    <result column="plus_or_minus_date" jdbcType="DATE" property="plusOrMinusDate" />
+    <result column="state" jdbcType="INTEGER" property="state" />
+    <result column="customer_name" jdbcType="VARCHAR" property="customerName" />
+    <result column="project_manager" jdbcType="VARCHAR" property="projectManager" />
+  </resultMap>
+	</mapper>

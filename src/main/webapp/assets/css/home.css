@@ -1,0 +1,171 @@
+* {
+	border: 0;
+	margin: 0;
+	padding: 0;
+}
+body {
+	font-family: '微软雅黑';
+	margin: 0 auto;
+	min-width: 980px;
+}
+ul {
+	display: block;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+li {
+	display: block;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+img {
+	border: 0;
+}
+dl, dt, dd, span {
+	margin: 0;
+	padding: 0;
+	display: block;
+}
+a, a:focus {
+	text-decoration: none;
+	color: #000;
+	outline: none;
+blr:expression(this.onFocus=this.blur());
+}
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+/*index*/
+.mainindex {
+	padding: 20px;
+	overflow: hidden;
+}
+.welinfo {
+	height: 32px;
+	line-height: 32px;
+	padding-bottom: 8px;
+}
+.welinfo span {
+	float: left;
+}
+.welinfo b {
+	padding-left: 8px;
+}
+.welinfo a {
+	padding-left: 15px;
+	color: #3186c8;
+}
+.welinfo a:hover {
+	color: #000;
+}
+.welinfo i {
+	font-style: normal;
+	padding-left: 8px;
+}
+.xline {
+	border-bottom: solid 1px #dfe9ee;
+	height: 5px;
+}
+.iconlist {
+	padding-left: 40px;
+	overflow: hidden;
+}
+.iconlist li {
+	text-align: center;
+	float: left;
+	margin-right: 25px;
+	margin-top: 25px;
+}
+.iconlist li p {
+	line-height: 25px;
+}
+.ibox {
+	clear: both;
+	padding-left: 40px;
+	padding-top: 18px;
+	overflow: hidden;
+	padding-bottom: 18px;
+}
+.ibtn {
+	background: url(../images/ibtnbg.png) repeat-x;
+	border: solid 1px #bfcfe1;
+	height: 23px;
+	line-height: 23px;
+	display: block;
+	float: left;
+	padding: 0 15px;
+	cursor: pointer;
+}
+.ibtn img {
+	margin-top: 5px;
+	float: left;
+	padding-right: 7px;
+}
+.box {
+	height: 15px;
+}
+.page_div {
+	width: 32%;
+	border: 1px solid #ddd;
+	border-radius: 4px;
+	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+	float: left;
+	margin-right: 1%;
+}
+.page_div h4 {
+	padding: 0px 15px;
+	border-bottom: 1px solid #ddd;
+	border-top-right-radius: 3px;
+	border-top-left-radius: 3px;
+	border-left: 2px solid #327ab7!important;
+	margin-left: -1px;
+	background: url(../images/right_j.jpg) 10px 12px no-repeat #f0f0f0;
+	height: 30px;
+	line-height: 30px;
+	text-indent: 5px;
+}
+.infolist {
+	padding: 10px;
+}
+.infolist li {
+	line-height: 35px;
+	height: 35px;
+	text-indent:10px;
+	background:url(../images/list2.png) no-repeat left center;
+}
+.infolist li span {
+	float: right;
+	display: block;
+	margin-right: 10px;
+}
+
+.border_b {
+	line-height:34px;
+}
+.border_b th{
+	font-size:14px;}
+.border_b td, th {
+	border-bottom:1px dashed #cccccc!important;
+	border-top:none!important;
+	padding:0 5px;
+}
+.task_button {
+    background: url("../images/chuli.jpg") no-repeat scroll center center;
+    color: #fff;
+    display: block;
+    height: 34px;
+    text-align: center;
+    width: 44px;
+}
+.task_button:hover {
+    background:url(../images/chuli_hover.jpg) no-repeat scroll center center;
+}
+.font_blue{
+	color:#327ab7;}
+.infolist > li > a:hover,.font_blue:hover,.ibtn:hover{
+	color:#eb8215;
+	}

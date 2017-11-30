@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.edu.nuc.weibo.dao.interfaces.ContractMapper">
+  <select id="queryByPage" parameterType="cn.edu.nuc.weibo.entity.searchObj.ContractInfoSearchObj" resultMap="BaseResultMap">
+		SELECT
+		 bm_contract.id,
+	contract_no,
+	signing_date,
+	contract_cost,
+	privilege,
+	contract_violate,
+	remarks,
+	bm_contract.state,
+	customs_no,
+	customer_name 
+     FROM bm_contract,cm_customer
+		WHERE bm_contract.state > 0 AND cm_customer.state > 0 AND bm_contract.customs_no = cm_customer.customer_no  
+		<if test="customerName != null">
+			AND customer_name LIKE CONCAT('%',#{customerName},'%')  
+		</if>
+		<if test="contractNo != null">
+			AND contract_no LIKE #{contractNo,jdbcType=INTEGER} 
+		</if>
+		<if test="privileges != null">
+			AND privileges LIKE #{privileges,jdbcType=INTEGER} 
+		</if>
+		<if test="startNumber != null">
+			<if test="endNumber != null">
+			LIMIT #{startNumber,jdbcType=INTEGER},#{endNumber,jdbcType=INTEGER}
+			</if>
+		</if>
+	</select>
+  
+  <resultMap id="BaseResultMap" type="cn.edu.nuc.weibo.entity.Contract">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="contract_no" jdbcType="VARCHAR" property="contractNo" />
+    <result column="signing_date" jdbcType="DATE" property="signingDate" />
+    <result column="contract_cost" jdbcType="DECIMAL" property="contractCost" />
+    <result column="privilege" jdbcType="INTEGER" property="privilege" />
+    <result column="contract_violate" jdbcType="VARCHAR" property="contractViolate" />
+    <result column="remarks" jdbcType="VARCHAR" property="remarks" />
+    <result column="state" jdbcType="INTEGER" property="state" />
+    <result column="customs_no" jdbcType="INTEGER" property="customsNo" />
+    <result column="customer_name" jdbcType="VARCHAR" property="customerName" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, contract_no, signing_date, contract_cost, privilege, contract_violate, remarks, 
+    state, customs_no
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from bm_contract
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from bm_contract
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.edu.nuc.weibo.entity.Contract">
+    insert into bm_contract (id, contract_no, signing_date, 
+      contract_cost, privilege, contract_violate, 
+      remarks, state, customs_no
+      )
+    values (#{id,jdbcType=INTEGER}, #{contractNo,jdbcType=VARCHAR}, #{signingDate,jdbcType=DATE}, 
+      #{contractCost,jdbcType=DECIMAL}, #{privilege,jdbcType=INTEGER}, #{contractViolate,jdbcType=VARCHAR}, 
+      #{remarks,jdbcType=VARCHAR}, #{state,jdbcType=INTEGER}, #{customsNo,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="cn.edu.nuc.weibo.entity.Contract">
+    insert into bm_contract
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="contractNo != null">
+        contract_no,
+      </if>
+      <if test="signingDate != null">
+        signing_date,
+      </if>
+      <if test="contractCost != null">
+        contract_cost,
+      </if>
+      <if test="privilege != null">
+        privilege,
+      </if>
+      <if test="contractViolate != null">
+        contract_violate,
+      </if>
+      <if test="remarks != null">
+        remarks,
+      </if>
+      <if test="state != null">
+        state,
+      </if>
+      <if test="customsNo != null">
+        customs_no,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="contractNo != null">
+        #{contractNo,jdbcType=VARCHAR},
+      </if>
+      <if test="signingDate != null">
+        #{signingDate,jdbcType=DATE},
+      </if>
+      <if test="contractCost != null">
+        #{contractCost,jdbcType=DECIMAL},
+      </if>
+      <if test="privilege != null">
+        #{privilege,jdbcType=INTEGER},
+      </if>
+      <if test="contractViolate != null">
+        #{contractViolate,jdbcType=VARCHAR},
+      </if>
+      <if test="remarks != null">
+        #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null">
+        #{state,jdbcType=INTEGER},
+      </if>
+      <if test="customsNo != null">
+        #{customsNo,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.edu.nuc.weibo.entity.Contract">
+    update bm_contract
+    <set>
+      <if test="contractNo != null">
+        contract_no = #{contractNo,jdbcType=VARCHAR},
+      </if>
+      <if test="signingDate != null">
+        signing_date = #{signingDate,jdbcType=DATE},
+      </if>
+      <if test="contractCost != null">
+        contract_cost = #{contractCost,jdbcType=DECIMAL},
+      </if>
+      <if test="privilege != null">
+        privilege = #{privilege,jdbcType=INTEGER},
+      </if>
+      <if test="contractViolate != null">
+        contract_violate = #{contractViolate,jdbcType=VARCHAR},
+      </if>
+      <if test="remarks != null">
+        remarks = #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null">
+        state = #{state,jdbcType=INTEGER},
+      </if>
+      <if test="customsNo != null">
+        customs_no = #{customsNo,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.edu.nuc.weibo.entity.Contract">
+    update bm_contract
+    set contract_no = #{contractNo,jdbcType=VARCHAR},
+      signing_date = #{signingDate,jdbcType=DATE},
+      contract_cost = #{contractCost,jdbcType=DECIMAL},
+      privilege = #{privilege,jdbcType=INTEGER},
+      contract_violate = #{contractViolate,jdbcType=VARCHAR},
+      remarks = #{remarks,jdbcType=VARCHAR},
+      state = #{state,jdbcType=INTEGER},
+      customs_no = #{customsNo,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  
+    <select id="findByProjectNo" parameterType="java.lang.String" resultType="java.lang.Integer">
+    select 
+    customer_no
+    from bm_contract
+    where project_no = #{projectNO,jdbcType=VARCHAR}
+  </select>
+</mapper>

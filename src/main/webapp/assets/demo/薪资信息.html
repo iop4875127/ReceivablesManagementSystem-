@@ -1,0 +1,146 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>zos 主界面</title>
+<link rel="stylesheet" type="text/css" href="../css/easyui.css"/>
+<link rel="stylesheet" type="text/css" href="../css/right.css"/>
+
+</head>
+<body class="easyui-layout">
+    <div data-options="region:'center'" border="false" >
+        <div id="tabs" class="easyui-tabs" data-options="fit:true,plain:true">
+            <div title="综合查询" style="overflow:visible">
+                <div class="easyui-layout" fit="true">
+                 <form action="">
+             <div id="cc" data-options="region:'north'" border="false" class="search">
+	            <div class="warp-from">
+                 <div class="search-page">
+                    <!--搜索区域-->
+                    <div class="search_div">
+                        <div class="search_text">查询方式</div>
+                        <div class="search_input">
+                          <select class="input_style input_width2 input_height">
+                            <option >全部</option>
+                            <option >员工查询</option>
+                            <option >部门查询</option>
+                          </select>
+                        </div>
+                    </div>
+                    <div class="search_div">
+                        <div class="search_text">查询结果</div>
+                        <div class="search_input">
+                          <select class="input_style input_width input_height">
+                            <option >全部</option>
+                            <option >员工</option>
+                            <option >干部</option>
+                          </select>        
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="search_box"> <!--没有样式-->                  	
+						<div class="search_div">
+							<div class="search_text">数据刷选</div>
+							<div class="search_input">
+						   		<select class="input_style input_width_84 input_height">
+									<option >或</option>
+									<option >与</option>
+								</select>
+								<input class="easyui-combotree" data-options="url:'tree_data1.json',method:'get'" class="input_style input_height">
+				</div>
+						</div>
+						<div class="search_div">
+							<div class="search_input">
+							 <div class="float_left">
+								  <select class="input_style input_width_84 input_height" style="margin-left: 5px">
+									<option >相等</option>
+									<option >小于</option>
+									<option >大于</option>
+									<option >相似</option>
+								 </select>
+								  <input type="text" name="textfield" id="textfield" class="input_style input_width input_height">
+							  </div>
+							  <span class="button_margin">
+								<a href="#"><img src="../images/search_add.png"/></a>
+							  </span> 
+							</div>
+						</div>
+						<div class="clearfix"></div>
+                    </div>
+                     <div class="search_box"> <!--没有样式-->                  	
+						<div class="search_div">
+							<div class="search_text">&nbsp;</div>
+							<div class="search_input">
+						   		<select class="input_style input_width_84 input_height">
+									<option >或</option>
+									<option >与</option>
+								</select>
+							  <input class="easyui-combotree" data-options="url:'tree_data1.json',method:'get'" class="input_style input_height" >
+							</div>
+						</div>
+						<div class="search_div">
+							<div class="search_input">
+							 <div class="float_left">
+								  <select class="input_style input_width_84 input_height" style="margin-left: 5px">
+									<option >相等</option>
+									<option >小于</option>
+									<option >大于</option>
+									<option >相似</option>
+								 </select>
+								  <input type="text" name="textfield" id="textfield" class="input_style input_width input_height">
+							  </div>
+							  <span class="button_margin">
+								<a href="#"><img src="../images/search_add.png"/></a>
+								<a href="#"><img src="../images/search_delete.png"/></a>
+							  </span> 
+							</div>
+						</div>
+						<div class="clearfix"></div>
+                    </div>
+                   
+                   
+                 </div>
+                 </div>
+                 <div class="tools">
+                    <ul class="toolbar">
+                        <li class="tool-active"><a  href="javascript:void(0);"><span><img src="../images/icon/save.png" /></span>存为模板</a></li>
+                        <li><a  href="javascript:void(0);"><span><img src="../images/icon/im_tmp.png" /></span>模板管理</a></li>
+                        <li><a  href="javascript:void(0);"><span><img src="../images/icon/im_data.png" /></span>导出</a></li>
+                    </ul>
+        
+                    <ul class="toolbar1">
+                       <input name="button" type="button" value="点击查询" class="buttons"/>
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>     
+                
+            </div>
+            <div data-options="region:'center'" border="false"  class="reginon-margin" >
+             <table id="tt" class="easyui-datagrid table"
+                       data-options="url:'datagrid_data1.json',method:'get',remoteSort:false,rownumbers:'true',border:false,singleSelect:true,fit:true,fitColumns:true,striped:true,pagination:true,pageSize:10">
+              <thead>
+                <tr>
+                  <th data-options="field:'ck',checkbox:'true'"></th>
+                  <th data-options="field:'itemid',sortable:'true'" width="80">Item ID</th>
+                  <th data-options="field:'productid'" width="100">Product ID</th>
+                  <th data-options="field:'listprice',sortable:'true',align:'right' " width="80">List Price</th>
+                  <th data-options="field:'unitcost',align:'right'" width="80">Unit Cost</th>
+                  <th data-options="field:'attr1'" width="150">Attribute</th>
+                  <th data-options="field:'status',align:'center'" width="60">Status</th>
+                </tr>
+              </thead>
+            </table>
+            </div>
+         </form>
+                </div>
+            </div>
+            <div title="自定义" style="overflow:visible">
+            	嘿嘿，同样的！
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+<script type="text/javascript" src="../script/jquery.min.js"></script>
+<script type="text/javascript" src="../script/jquery.easyui.min.js"></script>

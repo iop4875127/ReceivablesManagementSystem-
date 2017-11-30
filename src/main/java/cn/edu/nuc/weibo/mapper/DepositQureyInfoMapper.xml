@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.edu.nuc.weibo.dao.interfaces.BusinessManagement.DepositManagement.DepositInfo.DepositQureyInfoMapper">
+
+	<select id="queryByPage" parameterType="cn.edu.nuc.weibo.entity.searchObj.DepositInfoSearchObj" resultMap="BaseResultMap1">
+		SELECT a.*,b.customer_name,b.home_type FROM bm_deposit as
+		a,cm_customer as b WHERE a.state > 0 AND b.state > 0
+		AND a.customer_no = b.customer_no
+		<if test="homeType != null">
+			AND b.home_type = #{homeType,jdbcType=INTEGER}
+		</if>
+		<if test="area != null">
+			AND a.area = #{area,jdbcType=INTEGER}
+		</if>
+		<if test="realityDeposit != null">
+			AND a.reality_deposit = #{realityDeposit,jdbcType=
+			DECIMAL}
+		</if>
+		<if test="privileges != null">
+			AND a.privileges = #{privileges,jdbcType= INTEGER}
+		</if>
+		<if test="startNumber != null">
+			<if test="endNumber != null">
+				LIMIT #{startNumber,jdbcType=INTEGER},#{endNumber,jdbcType=INTEGER}
+			</if>
+		</if>
+
+	</select>
+
+	<select id="selectByPrimaryKey" parameterType="java.lang.Integer"
+		resultMap="BaseResultMap">
+		select
+		id, should_deposit, area, remarks, state, reality_deposit, privileges,
+		customer_no
+		from bm_deposit
+		where id = #{id,jdbcType=INTEGER}
+	</select>
+	<resultMap id="BaseResultMap" type="cn.edu.nuc.weibo.entity.Deposit">
+		<id column="id" jdbcType="INTEGER" property="id" />
+		<result column="should_deposit" jdbcType="DECIMAL" property="shouldDeposit" />
+		<result column="area" jdbcType="INTEGER" property="area" />
+		<result column="remarks" jdbcType="VARCHAR" property="remarks" />
+		<result column="state" jdbcType="INTEGER" property="state" />
+		<result column="reality_deposit" jdbcType="DECIMAL" property="realityDeposit" />
+		<result column="privileges" jdbcType="INTEGER" property="privileges" />
+		<result column="customer_no" jdbcType="INTEGER" property="customerNo" />
+	</resultMap>
+	<resultMap id="BaseResultMap1" type="cn.edu.nuc.weibo.entity.VO.BusinessManagement.DepositManagement.DepositInfo.DepositInfoVO">
+		<id column="id" jdbcType="INTEGER" property="id" />
+		<result column="should_deposit" jdbcType="DECIMAL" property="shouldDeposit" />
+		<result column="area" jdbcType="INTEGER" property="area" />
+		<result column="remarks" jdbcType="VARCHAR" property="remarks" />
+		<result column="state" jdbcType="INTEGER" property="state" />
+		<result column="reality_deposit" jdbcType="DECIMAL" property="realityDeposit" />
+		<result column="privileges" jdbcType="INTEGER" property="privileges" />
+		<result column="customer_no" jdbcType="INTEGER" property="customerNo" />
+		<result column="customer_name" jdbcType="VARCHAR" property="customerName" />
+		<result column="home_type" jdbcType="INTEGER" property="homeType" />
+	</resultMap>
+
+</mapper>

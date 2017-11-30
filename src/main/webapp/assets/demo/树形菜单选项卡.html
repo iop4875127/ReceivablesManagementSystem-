@@ -1,0 +1,255 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>zos 主界面</title>
+<link rel="stylesheet" type="text/css" href="../css/easyui.css"/>
+<link rel="stylesheet" type="text/css" href="../css/right.css"/>
+<link rel="stylesheet" type="text/css" href="../css/font-awesome.css"/>
+
+<script type="text/javascript" src="../script/jquery.min.js"></script>
+<script type="text/javascript" src="../script/jquery.easyui.min.js"></script>
+</style>
+</head>
+<body class="easyui-layout">
+    <div data-options="region:'center'" border="false" >
+        <div class="easyui-layout" fit="true" style="margin-left:7px; padding-bottom:5px; padding-right:7px;">
+             <form action="">
+             <div id="cc" data-options="region:'north'" border="false" class="search">
+ 				 <div class="warp-from">                
+               	   <div class="search-page">
+                    <!--搜索区域-->
+                    <div class="search_div">
+                        <div class="search_text">省份</div>
+                        <div class="search_input">
+                          <input type="text" name="textfield" id="textfield" class="input_style input_width input_height">
+                        </div>
+                    </div>
+                    <div class="search_div">
+                        <div class="search_text">地区</div>
+                        <div class="search_input">
+                          <input type="text" name="textfield" id="textfield" class="input_style input_width input_height">
+                        </div>
+                    </div>
+                    <div class="search_div">
+                        <div class="search_text">供应商名</div>
+                        <div class="search_input">
+                          <input type="text" name="textfield" id="textfield" class="input_style input_width input_height">
+                        </div>
+                    </div>
+                    <div class="search_div">
+                        <div class="search_text">省份</div>
+                        <div class="search_input">
+                          <input type="text" name="textfield" id="textfield" class="input_style input_width input_height">
+                        </div>
+                    </div>
+                    <div class="search_div">
+                        <div class="search_text">省份</div>
+                        <div class="search_input">
+                          <input type="text" name="textfield" id="textfield" class="input_style input_width input_height">
+                        </div>
+                    </div>
+                    <div class="search_div">
+                        <div class="search_text">供应商名</div>
+                         <div class="search_input">
+                          <select class="easyui-combobox input_width" name="state">
+                            <option value="AL">Alabama</option>
+                            <option value="AK">Alaska</option>
+                            <option value="AZ">Arizona</option>
+                            <option value="AR">Arkansas</option>
+                        </select>
+
+                </div>
+                    </div>
+                    <div class="search_div">
+                        <div class="search_text">省份</div>
+                        <div class="search_input">
+                          <input type="text" name="textfield" id="textfield" class="input_style input_width input_height">
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                 </div>
+                 </div>
+                 <div class="tools">
+                    <ul class="toolbar">
+                        <li class="tool-active"><a  href="javascript:void(0);" onclick="$('#tck').window('open')"><span><img src="../images/icon/add.png" /></span>添加</a></li>
+                        <li><span><img src="../images/icon/edit.png" /></span>修改</li>
+                        <li><span><img src="../images/icon/delete.png" /></span>删除</li>
+                        <li><span><img src="../images/icon/statistic.png" /></span>统计</li>
+                        <li><span><img src="../images/icon/obsolete.png" /></span>废除</li>
+		                <li><span><img src="../images/icon/search.png" /></span>查询</li>
+        		        <li><span><img src="../images/icon/approval.png" /></span>审批</li>
+        		        <li><span><img src="../images/icon/refresh.png" /></span>刷新</li>
+                        <li><a  href="javascript:void(0);" onclick="$('#tip').window('open')"><span><img src="../images/icon/tips.png" /></span>提示</a></li>
+                    </ul>
+        
+                    <ul class="toolbar1">
+                       <input name="button" type="button" value="点击查询" class="buttons"/>
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>     
+                
+            </div>
+           	<div data-options="region:'west',title:'树形菜单标题'" border="false" class="tree-west" >
+             	 <iframe src="树形菜单.html" width="100%" height="99%" frameborder="0"></iframe>
+             </div>
+             <div data-options="region:'center'" border="false">
+                <div id="tabs" class="easyui-tabs tabs-heading-margin" data-options="fit:true,plain:true" >
+                    <div title="选项卡" style="overflow:visible">
+                        <div class="easyui-layout" fit="true" style="margin-top:5px">
+            			  <div id="cc" data-options="region:'north'" border="false" class="search">
+                			 <div class="warp-from">
+	                            <div class="search-page">
+                                <!--搜索区域-->
+                                <div class="search_div">
+                                    <div class="search_text">省份</div>
+                                    <div class="search_input">
+                                      <input type="text" name="textfield" id="textfield" class="input_style input_width input_height">
+                                    </div>
+                                </div>
+                                <div class="search_div">
+                                    <div class="search_text">地区</div>
+                                    <div class="search_input">
+                                      <input type="text" name="textfield" id="textfield" class="input_style input_width input_height">
+                                    </div>
+                                </div>
+                                <div class="search_div">
+                                    <div class="search_text">供应商名</div>
+                                    <div class="search_input">
+                                      <input type="text" name="textfield" id="textfield" class="input_style input_width input_height">
+                                    </div>
+                                </div>
+                                <div class="search_div">
+                                    <div class="search_text">省份</div>
+                                    <div class="search_input">
+                                      <input type="text" name="textfield" id="textfield" class="input_style input_width input_height">
+                                    </div>
+                                </div>
+                                <div class="search_div">
+                                    <div class="search_text">省份</div>
+                                    <div class="search_input">
+                                      <input type="text" name="textfield" id="textfield" class="input_style input_width input_height">
+                                    </div>
+                                </div>
+                                <div class="search_div">
+                                    <div class="search_text">供应商名</div>
+                                     <div class="search_input">
+                                         <select class="input_style input_width input_height">
+                                            <option >下拉菜单1</option>
+                                            <option >下拉菜单2</option>
+                                            <option >下拉菜单3</option>
+                                          </select>            
+                        		    </div>
+                                </div>
+                                <div class="search_div">
+                                    <div class="search_text">省份</div>
+                                    <div class="search_input">
+                                      <input type="text" name="textfield" id="textfield" class="input_style input_width input_height">
+                                    </div>
+                                </div>
+                                <div class="clearfix"></div>
+                 </div>
+                 			 </div>
+                            <div class="tools">
+                                    <ul class="toolbar">
+                                        <li class="tool-active"><a  href="javascript:void(0);" onclick="$('#tck').window('open')"><span><img src="../images/icon/add.png" /></span>添加</a></li>
+                                        <li><span><img src="../images/icon/edit.png" /></span>修改</li>
+                                        <li><span><img src="../images/icon/delete.png" /></span>删除</li>
+                                        <li><span><img src="../images/icon/statistic.png" /></span>统计</li>
+                                        <li><span><img src="../images/icon/obsolete.png" /></span>废除</li>
+                                        <li><span><img src="../images/icon/search.png" /></span>查询</li>
+                                        <li><span><img src="../images/icon/approval.png" /></span>审批</li>
+                                        <li><span><img src="../images/icon/refresh.png" /></span>刷新</li>
+                                        <li><a  href="javascript:void(0);" onclick="$('#tip').window('open')"><span><img src="../images/icon/tips.png" /></span>提示</a></li>
+                                    </ul>
+                        
+                                    <ul class="toolbar1">
+                                       <input name="button" type="button" value="点击查询" class="buttons"/>
+                                    </ul>
+                                    <div class="clearfix"></div>
+                                </div>     
+                          </div>
+                          <div data-options="region:'center'" border="false"  class="reginon-margin" >
+                             <table id="tt" class="easyui-datagrid table"
+                                       data-options="url:'datagrid_data1.json',method:'get',remoteSort:false,rownumbers:'true',border:false,singleSelect:false,fit:true,fitColumns:true,striped:true,pagination:true,pageSize:10">
+                              <thead>
+                                <tr>
+                                  <th data-options="field:'ck',checkbox:'true'"></th>
+                                  <th data-options="field:'itemid',sortable:'true'" width="80">Item ID</th>
+                                  <th data-options="field:'productid'" width="100">Product ID</th>
+                                  <th data-options="field:'listprice',sortable:'true',align:'right' " width="80">List Price</th>
+                                  <th data-options="field:'unitcost',align:'right'" width="80">Unit Cost</th>
+                                  <th data-options="field:'attr1'" width="150">Attribute</th>
+                                  <th data-options="field:'status',align:'center'" width="60">Status</th>
+                                </tr>
+                              </thead>
+                            </table>
+                          </div>
+                        </div>
+                    </div>
+                    <div title="自定义" style="overflow:visible">
+                        <div class="easyui-layout" fit="true" style="margin-top:5px">
+                          <div data-options="region:'center'" border="false"  class="reginon-margin" >
+                             <table id="tt" class="easyui-datagrid table"
+                                       data-options="url:'datagrid_data1.json',method:'get',remoteSort:false,rownumbers:'true',border:false,singleSelect:true,fit:true,fitColumns:true,striped:true,pagination:true,pageSize:10">
+                              <thead>
+                                <tr>
+                                  <th data-options="field:'itemid',sortable:'true'" width="80">Item ID</th>
+                                  <th data-options="field:'productid'" width="100">Product ID</th>
+                                  <th data-options="field:'listprice',sortable:'true',align:'right' " width="80">List Price</th>
+                                  <th data-options="field:'unitcost',align:'right'" width="80">Unit Cost</th>
+                                  <th data-options="field:'attr1'" width="150">Attribute</th>
+                                  <th data-options="field:'status',align:'center'" width="60">Status</th>
+                                </tr>
+                              </thead>
+                            </table>
+                          </div>
+                        </div>
+                    </div>
+                </div>
+             </div>
+             </form>
+        </div>
+    </div>
+</body>
+
+</html>
+<div id="tck" class="easyui-window">
+</div>
+<div id="tip" class="easyui-window tip-content" >
+	<div class="tip-div">
+    	<img src="../images/tip_icon.png" />
+        <span class="spans">当前合同设备订货 <font class="font-20"> ”非空 ”</font>，不能导入！</span>
+        <div class="clearfix"></div>
+    </div>
+    <div class="tip-button">
+     	<input name="button" type="button" value="我知道了" class="buttons"/>
+    </div>
+</div>
+
+<script type="text/javascript" >
+$('#tck').window({
+		width:960,
+		height:500,
+		modal:true,
+		closed:true,
+		minimizable:false,
+		collapsible:false,
+		maximizable:false,
+		resizable:false,
+		title:'iframe连接页面显示',
+		content:'<iframe src=\"添加.htm\l" frameborder=\"0\" scrolling=\"auto\" width=\"100%\" height=\"100%\" ></iframe>'
+
+	});
+$('#tip').window({
+		width:526,
+		height:216,
+		modal:true,
+		closed:true,
+		minimizable:false,
+		collapsible:false,
+		maximizable:false,
+		resizable:false,
+		title:'警告提示框'
+	});
+</script>

@@ -1,0 +1,196 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>zos 主界面</title>
+<link rel="stylesheet" type="text/css" href="../css/easyui.css"/>
+<link rel="stylesheet" type="text/css" href="../css/right.css"/>
+
+</head>
+<body class="easyui-layout">
+    <div data-options="region:'center'" border="false" >
+        <div class="easyui-layout" fit="true">
+             <form action="">
+             <div id="cc" data-options="region:'north'" border="false" class="search">
+				<div class="warp-from">
+				 <div class="search-page">
+                    <!--搜索区域-->
+                    <div class="search_div">
+                        <div class="search_text">客户编号</div>
+                        <div class="search_input">
+                          <input type="text" name="textfield" value="16101703" id="textfield" class="bottom_style input_width input_height" disabled>
+                        </div>
+                    </div>
+                    <div class="search_div">
+                        <div class="search_text">设备类别</div>
+                        <div class="search_input">
+                          <input type="text" name="textfield" value="16101703" id="textfield" class="bottom_style input_width input_height" disabled>
+                        </div>
+                    </div>
+                    <div class="search_div">
+                        <div class="search_text">合同编号</div>
+                        <div class="search_input">
+                          <input type="text" name="textfield" id="textfield" value="马江明" class="bottom_style input_width input_height" disabled>
+                        </div>
+                    </div>
+                    <div class="search_div">
+                        <div class="search_text">合同名称</div>
+                        <div class="search_input">
+                          <input type="text" name="textfield" id="textfield" value="盐亭县乘风驾驶学校有限公司" class="bottom_style input_width2 input_height">
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                     <div class="search_div">
+                        <div class="search_text">下任务人</div>
+                        <div class="search_input">
+                         <input type="text" name="textfield" id="textfield" class="input_style2 input_width input_height">
+                        </div>
+                    </div>
+                     <div class="search_div">
+                        <div class="search_text">制图人员</div>
+                        <div class="search_input">
+                         <input type="text" name="textfield" id="textfield" class="input_style input_width input_height">
+                        </div>
+                    </div>
+                     <div class="search_div">
+                        <div class="search_text">审核人员</div>
+                        <div class="search_input">
+                         <input type="text" name="textfield" id="textfield" class="input_style input_width input_height">
+                        </div>
+                    </div>
+                     <div class="search_div">
+                        <div class="search_text">下单日期</div>
+                        <div class="search_input">
+                        <input class="easyui-datebox input_style input_width input_height" data-options="formatter:myformatter,parser:myparser"></input>
+                      </div>
+                    </div>
+                     <div class="search_div">
+                        <div class="search_text">要求日期</div>
+                        <div class="search_input">
+                        <input class="easyui-datebox input_style input_width input_height" data-options="formatter:myformatter,parser:myparser"></input>
+						                        
+                      </div>
+                     </div> 
+                     <div class="search_div">
+                        <div class="search_text">完成日期</div>
+                        <div class="search_input">
+                        <input class="easyui-datebox input_style input_width input_height" data-options="formatter:myformatter,parser:myparser"></input>
+						                        
+                      </div>
+                    </div>
+                    <div class="clearfix"></div>
+                 </div>  
+                 </div>              
+                 <div class="tools">
+                    <ul class="toolbar">
+                    <li class="tool-active"><a href="#none"><span><img src="../images/icon/trans_position.png" /></span>工位布局调用</a></li>
+                        <li><span><img src="../images/icon/im_tmp.png" /></span>调入模板</li>
+                        <li><a  href="javascript:void(0);" onclick="$('#shebei').window('open')"><span><img src="../images/icon/device.png" /></span>设备</a></li>
+                        <li><span><img src="../images/icon/clear.png" /></span>清除</li>
+                        <li><span><img src="../images/icon/save.png" /></span>保存</li>
+		                <li><span><img src="../images/icon/print.png" /></span>打印</li>
+                    </ul>
+        
+                    <ul class="toolbar1">
+                       <input name="button" type="button" value="点击查询" class="buttons"/>
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>     
+                
+            </div>
+             <div data-options="region:'center'" border="false" class="reginon-margin" >
+             	<div class="gs-page datagrid-wrap">
+                	<h2 class="datagrid-header">工位布局</h2>
+             		<textarea name="textarea" id="textarea" cols="88" rows="5" class="input_style input_height2" style="width:100%;"></textarea>
+                </div>
+             	<div class="sb-page datagrid-wrap">
+                	<h2 class="datagrid-header">使用设备</h2>
+             		<textarea name="textarea" id="textarea" cols="88" rows="5" class="input_style input_height2" style="width:100%;"></textarea>
+                </div>
+            </div>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>
+<script type="text/javascript" src="../script/jquery.min.js"></script>
+<script type="text/javascript" src="../script/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="../script/menu.js"></script>
+<script type="text/javascript" src="../script/easyui-window-fix.js"></script>
+<script>
+	//获取文本框值
+	var heights=$(window).height()-$('.datagrid-header').outerHeight(true) - $('.search').outerHeight(true);
+	$(".input_height2").css("height",heights-10);
+</script>
+
+<div id="shebei" class="easyui-window" style="padding:5px;" >
+	<div style="width:352px; float:left;  height:550px;">
+    
+    	<table class="easyui-datagrid" id="lList"  style="width:352px;"
+			data-options="singleSelect:true,collapsible:true,fit:'true',rownumbers:'true',method:'get'">
+		<thead>
+			<tr>
+				<th data-options="field:'itemid',width:130">设备名称</th>
+				<th data-options="field:'productid',width:165">规格型号</th>
+			</tr>
+		</thead>
+			<tr>
+				<td >设备名称</td>
+				<td >规格型号</td>
+			</tr>
+			<tr>
+				<td >设备名称2</td>
+				<td >规格型号2</td>
+			</tr>
+
+	</table>
+
+    </div>
+    <div style="width:82px; float:left; text-align:center">
+       	<div class="jt-button">
+	        <input name="button" type="button"  value=">>" class="jt01"/>
+	        <input name="button" type="button" value=">" class="jt01"/>
+	        <input name="button" type="button" value="<" class="jt01"/>
+	        <input name="button" type="button" value="<<" class="jt01"/>
+        </div>
+    </div>
+    <div style="width:352px; float:left; height:550px;">
+    	<table class="easyui-datagrid" id="rList"  style="width:352px;"
+			data-options="singleSelect:true,collapsible:true,fit:'true',rownumbers:'true',method:'get'">
+		<thead>
+			<tr>
+				<th data-options="field:'itemid',width:130">设备名称</th>
+				<th data-options="field:'productid',width:165">规格型号</th>
+			</tr>
+		</thead>
+        			<tr>
+				<td >设备名称</td>
+				<td >规格型号</td>
+			</tr>
+			<tr>
+				<td >设备名称2</td>
+				<td >规格型号2</td>
+			</tr>
+
+	</table>
+    </div>
+</div>
+
+<script>
+	
+$('#shebei').window({
+		width:800,
+		height:600,
+		modal:true,
+		closed:true,
+		minimizable:false,
+		collapsible:false,
+		maximizable:false,
+	
+		title:'设备选择'
+	});
+</script>
+
+
+

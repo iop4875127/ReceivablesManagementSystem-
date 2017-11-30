@@ -1,0 +1,789 @@
+
+* {
+	margin: 0;
+	padding: 0;
+}
+html {
+	font-size: 100%;
+	height: 100%;
+}
+body {
+	background-color: #fff;
+	font-family: "微软雅黑";
+	font-size: 12px;
+	-ms-text-size-adjust: 100%;
+	-webkit-text-size-adjust: 100%;
+	color: #515151;
+	-moz-osx-font-smoothing: grayscale;
+	-webkit-font-smoothing: antialiased !important;
+}
+img {
+	border: 0;
+}
+button {
+	overflow: visible;
+}
+select {
+	margin: 0;
+	padding: 0;
+}
+button, select {
+	text-transform: none;
+}
+button, html input[type="button"], input[type="reset"], input[type="submit"] {
+	-webkit-appearance: button;
+	cursor: pointer;
+}
+button[disabled], html input[disabled] {
+	cursor: default;
+}
+button::-moz-focus-inner, input::-moz-focus-inner {
+ padding: 0;
+ border: 0;
+}
+input {
+	line-height: normal;
+}
+input[type="checkbox"], input[type="radio"] {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	padding: 0;
+}
+input[type="number"]::-webkit-inner-spin-button, input[type="number"]::-webkit-outer-spin-button {
+ height: auto;
+}
+input[type="search"] {
+	-webkit-box-sizing: content-box;
+	-moz-box-sizing: content-box;
+	box-sizing: content-box;
+	-webkit-appearance: textfield;
+}
+input[type="search"]::-webkit-search-cancel-button, input[type="search"]::-webkit-search-decoration {
+ -webkit-appearance: none;
+}
+*, *:before, *:after {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box
+}
+ul li {
+	list-style: none;
+}
+a {
+	background-color: transparent;
+	text-decoration: none;
+}
+a:active, a:hover {
+	outline: 0;
+}
+/*公用 css*/
+.clearfix {
+	clear: both;
+}
+.pull-right {
+	float: right !important;
+}
+.pull-left {
+	float: left !important;
+}
+.hide {
+	display: none !important;
+}
+.show {
+	display: block !important;
+}
+.img-responsive {
+	display: block;
+	max-width: 100%;
+	height: auto;
+}
+.txt-center {
+	text-align: center;
+}
+.warp-from input {
+	text-indent: 3px;
+}
+.search_input > .textbox {
+	/*下拉菜单定死宽度，如果变长需要重新定义class的search_input*/
+	width: 146px;
+}
+/*必填项样式*/
+.input-required {
+	color: #FF0000;
+	padding-right: 5px;
+}
+/*当前位置*/
+.right-north {
+	height: 37px;
+}
+.dqwz {
+	background: #edf6fa;
+	height: 34px;
+	line-height: 34px;
+	font-size: 14px;
+	padding: 0px 10px;
+	color: #4c4d4d;
+	border-bottom: 1px solid #d7e4ea;
+}
+/*搜索*/
+.search {
+	overflow: auto;
+	padding: 7px 7px 8px 7px;
+	height:auto !important;
+}
+.search-page {
+	padding: 5px 5px 0;
+	background: #f2faff;
+	border-radius: 5px;
+	border: 1px solid #d7e4ea;
+	margin: 0 0px;
+}
+.search_div {
+	margin-bottom: 5px;
+	float: left;
+}
+.search_text {
+	width: 90px;
+	float: left;
+	height: 25px;
+	text-align: right;
+	padding-right: 8px;
+	line-height: 25px;
+}
+
+.search_input {
+	float: left;
+}
+.input_style {
+	border: 1px solid #d8d8d8;
+	background: #FFF;
+}
+/*命令菜单*/
+.tools {
+	clear: both;
+	padding: 0 15px 0 0px;
+}
+.toolbar {
+	float: left;
+	width: 80%;
+}
+.toolbar li {
+	background: url(../images/tool-bg.png) repeat-x top left;
+	line-height: 28px;
+	height: 28px;
+	border: solid 1px #d3dbde;
+	float: left;
+	padding-right: 10px;
+	margin-right: 5px;
+	border-radius: 3px;
+	cursor: pointer;
+	margin-top: 7px;
+}
+.toolbar li:hover {
+	background: url(../images/menu_li_bg2.png) repeat-x bottom left;
+	border: solid 1px #c8720e;
+	color: #FFF;
+}
+.tool-active {
+	background: url(../images/menu_li_bg2.png) repeat-x bottom left;
+	border: solid 1px #c8720e;
+	color: #FFF;
+}
+.toolbar .tool-active a, .toolbar li a {
+	color: #000;
+}
+.toolbar .tool-active a:hover, .toolbar li a:hover {
+	color: #fff;
+}
+.toolbar li > span {
+	float: left;
+	margin-left: 10px;
+	margin-right: 5px;
+	margin-top: 4px;
+}
+.toolbar li a > span {
+	float: left;
+	margin-left: 10px;
+	margin-right: 5px;
+	margin-top: 4px;
+}
+.toolbar1 {
+	float: right;
+	width: 20%;
+	margin-top: 7px;
+}
+.toolbar1 input {
+	float: right;
+}
+.toolbar li span img {
+	width: 20px;
+	height: 20px;
+}
+.buttons {
+	background: url(../images/button.png) no-repeat;
+	width: 76px;
+	height: 27px;
+	line-height: 27px;
+	color: #FFF;
+	border: 0px;
+	margin-left: 5px;
+}
+.Reset_button {
+	background: url(../images/Reset.png) no-repeat;
+	width: 76px;
+	height: 27px;
+	line-height: 27px;
+	color: #FFF;
+	border: 0px;
+	margin-left: 5px;
+}
+.buttons:hover {
+	background: url(../images/menu_li_bg2.png) repeat-x bottom left;
+	border: solid 1px #c8720e;
+	border-radius: 4px;
+}
+/*表格*/
+.reginon-margin {
+	padding: 0 7px 5px 7px;
+}
+.reginon-margin2 {
+	padding: 0 7px 0px 7px;
+}
+.datagrid-wrap {
+	border-top: 2px solid #1e85c2;
+	border-right: 1px solid #cbcbcb;
+	border-left: 1px solid #cbcbcb;
+	border-bottom: 1px solid #cbcbcb;
+}
+.datagrid-wrap-noborder{
+	border-left: 0px solid #cbcbcb;	
+}
+/*树形菜单*/
+.tree-west {
+	width: 273px;
+	margin-top: -0px;
+	border-right: 1px solid #cbcbcb;
+	border-left: 1px solid #cbcbcb;
+	border-bottom: 1px solid #cbcbcb;
+}
+.layout-panel-west .panel-title {
+	font-size: 12px;
+	font-weight: bold;
+	color: #777;
+	height: 29px;
+	line-height: 29px;
+	border-right: 1px solid #cbcbcb;
+	border-left: 1px solid #cbcbcb;
+	border-bottom: 1px solid #cbcbcb;
+	padding-left: 5px;
+}
+/*输入框*/
+.input_text {
+	float: left;
+	height: 25px;
+	text-align: left;
+	padding-right: 8px;
+	line-height: 25px;
+}
+.input_text_width {
+	width: 90px;
+	padding-left: 15px;
+}
+.wrap-page {
+	margin: 10px;
+	border-bottom: 1px dotted #525252;
+}
+.wrap-page h2 {
+	font-size: 14px;
+	color: #1775b2;
+	padding: 10px 15px;
+}
+.wrap-page_n {
+	margin: 1px;
+	border-bottom: 1px dotted #525252;
+}
+.wrap-page_n h2 {
+	font-size: 12px;
+	color: #1775b2;
+	padding: 10px 15px;
+}
+/*点击按钮*/
+.button-bc {
+	background: #2f6fa8;
+	border: 1px solid #265582;
+	border-radius: 5px;
+	color: #fff;
+}
+.button-bc:hover {
+	background: #ee8816;
+	border: 1px solid #cd7410;
+}
+.button-bc-width {
+	padding: 5px 10px;
+}
+.button-qx {
+	background: #fefefe;
+	border: 1px solid #c6c6c6;
+	border-radius: 5px;
+	color: #000;
+}
+.button-qx:hover {
+	background: #ebebeb;
+	color: #333;
+}
+.button-add {
+	background: #f1f6f7;
+	border: 1px solid #d3dbde;
+	border-radius: 5px;
+	color: #000;
+}
+.button-add:hover {
+	background: #ebebeb;
+	color: #333;
+}
+/*弹出框标题*/
+.window .panel-title {
+	color: #FFF;
+	text-indent: 10px;
+	padding-top: 2px;
+}
+.tip-page {
+	position: relative;
+	padding: 5px;
+	margin: 5px;
+}
+.tip-page-info {
+	background: #f4f2cd;
+	border: 1px solid #bcba7d;
+	border-radius: 5px;
+	padding: 5px 15px;
+	line-height: 22px;
+}
+.tip_icon {
+	position: absolute;
+	top: -12px;
+	left: -2px;
+}
+.tip-content {
+	background: #f3f3f3;
+}
+.tip-div {
+	padding: 5px 20px 10px;
+	border-bottom: 1px solid #e2e2e2;
+}
+.tip-div img {
+	float: left;
+	margin-right: 10px;
+}
+.tip-div .spans {
+	font-size: 18px;
+	margin-top: 40px;
+	display: block;
+}
+.font-20 {
+	color: #F00;
+	font-style: italic;
+	font-weight: bold;
+	font-size: 26px;
+}
+.tip-button {
+	border-top: 1px solid #fff;
+	padding: 12px;
+	text-align: right;
+}
+.font-18 {
+	font-size: 14px;
+	color: #999
+}
+.font-30 {
+	font-weight: 800;
+	font-size: 30px;
+}
+.font-green {
+	color: #3b8f16;
+}
+.tip_content {
+	margin-top: 28px;
+	display: block;
+	font-size: 18px;
+}
+.tip_content p {
+	margin-top: 5px;
+}
+.bottom_style {
+	border: 0;
+	border-bottom: 1px solid #d8d8d8;
+	background: transparent;
+	text-indent: 10px;
+}
+.buttons2 {
+	background: url(../images/button2.png) no-repeat;
+	width: 117px;
+	height: 27px;
+	line-height: 27px;
+	color: #FFF;
+	border: 0px;
+	float: left;
+}
+.button-margin {
+	margin-right: 5px;
+}
+.buttons2:hover {
+	background: url(../images/menu_li_bg2.png) repeat-x bottom left;
+	border: solid 1px #c8720e;
+	border-radius: 4px;
+}
+.panel-margin {
+	margin: 10px;
+}
+.gs-page {
+	width: 50%;
+	float: left;
+}
+.sb-page {
+	width: 49.7%;
+	float: right;
+}
+.gs-page h2, .sb-page h2 {
+	font-size: 14px;
+	height: 35px;
+	line-height: 35px;
+	text-indent: 10px;
+}
+.jt-button {
+	width: 60px;
+	margin: 0 auto;
+	padding-top: 100px;
+}
+.jt01 {
+	background: rgba(0, 0, 0, 0) url("../images/tool-bg.png") repeat-x scroll left top;
+	border: 1px solid #d3dbde;
+	border-radius: 3px;
+	cursor: pointer;
+	height: 28px;
+	line-height: 28px;
+	margin-right: 5px;
+	margin-top: 7px;
+	width: 60px;
+	text-align: center;
+}
+.jt01:hover {
+	background: rgba(0, 0, 0, 0) url("../images/menu_li_bg2.png") repeat-x scroll left bottom;
+	border: 1px solid #c8720e;
+	color: #fff;
+}
+
+.norths {
+	overflow: auto;
+	margin-top: 0;
+	padding: 0px 7px 8px 7px;
+}
+.search_LH {
+	line-height: 25px;
+}
+.toolbar .l-btn-text img {
+	float: left;
+}
+.toolbar .l-btn-text {
+	line-height: 20px;
+}
+.tabs-heading-margin .tabs-header {
+	padding-top: 0px;
+}
+.text-height {
+	height: 55px;
+}
+.text-width {
+	width: 798px;
+	padding: 3px;
+}
+/*薪资信息*/
+.button_margin {
+	margin: 5px;
+}
+.search_input .easyui-combotree {
+	width: 237px;
+}
+/*参数配置-薪资设置-薪资项配置*/
+.tree_title{
+	height: 29px;
+	line-height:29px;
+	padding: 0 7px;
+	font-weight: bold;
+	border-bottom: 1px solid #cbcbcb;
+	
+}
+/*树形列表搜索*/
+.tree_search_bg{
+	background: #f2faff;
+	height: 39px;
+	padding: 5px 6px;
+	font-weight: bold;
+	position: fixed;
+}
+.container{
+	margin-top:38px;
+}
+.search_button{
+	background:#f0f5f6;
+	border: 1px solid #d3dbde;
+	border-left: none;
+	height: 24px;
+	width: 45px;
+	float: left;
+	border-top-left-radius:0em;
+	border-top-right-radius:2em;
+	border-bottom-right-radius:2em;
+	border-bottom-left-radius:0em;
+}
+.search_button:hover{
+	background:url(../images/menu_li_bg2.png) repeat-x;
+	color: #fff;
+}
+.input_width_214{
+	width:214px;
+	padding:0px 5px;
+	height: 24px;
+	border: 1px solid #d8d8d8;
+	background: #FFF;
+	float: left;
+	border-top-left-radius:2em;
+	border-top-right-radius:0em;
+	border-bottom-right-radius:0em;
+	border-bottom-left-radius:2em;
+}
+.search_line{
+	border-bottom: 1px solid #d0e1eb;
+	margin:0 8px 8px;
+}
+/*************************************************
+	Part Start
+	添加区域输入字段、输入框、表格、窗口等公用样式 
+*************************************************/
+.Wmagin{
+	margin:7px;
+}
+.tree-margin{
+	margin:7px;
+}
+/*搜索区域有很多日期控件，例如结束日期用“-”代替，文字必须4个字一下*/
+.search_text_65 {
+	width: 65px;
+	float: left;
+	height: 25px;
+	text-align: right;
+	padding-right: 8px;
+	line-height: 25px;
+}
+/* 文本框提示警告醒目文本框*/
+.input_style2 {
+	border: 1px solid #9e2629;
+	background: #FFF;
+}
+/* 下拉框提示警告醒目文本框*/
+.border_red .textbox {
+	border: 1px solid #9e2629
+}
+/*添加window弹出框里内间距*/
+.Wtab{
+	padding:0 3px;
+}
+/*输入框宽度值*/
+.input_text_width_80 {
+	width: 80px;/*4个字*/
+}
+.input_text_width_100 {
+	width: 100px;/*6个字*/
+}
+.input_text_width_120 {
+	width: 120px;/*8个字*/
+}
+.input_width_auto {
+	width: 100%;
+}
+.input_width {
+	width: 146px;
+}
+.input_width2 {
+	width: 326px;
+}
+.input_width_84 {
+	width: 84px;
+}
+.input_width_118{
+	/*文字90px宽度，两个合并一个输入宽度（326）尺寸，输入字段值*/
+	width:118px;
+}
+.input_width_123{
+	/*文字80px宽度，两个合并一个输入宽度（326）尺寸，输入字段值*/
+	width:123px;
+}
+.input_width_372{
+	/*文字80px宽度，两个输入宽度（146）尺寸，输入字段值*/
+	width:372px;
+}
+.input_width_412{
+	/*文字120px宽度，两个输入宽度（146）尺寸，输入字段值*/
+	width:412px;
+	
+}
+.input_height {
+	height: 22px;
+	line-height: 22px;
+}
+.input_height2 {
+	font-size: 14px;
+	line-height: 25px;
+	border: 0;
+}
+.input_height_auto {
+	line-height: 25px;
+}
+/*输入框样式*/
+.input_style_noboder {
+	border: 0px solid #d8d8d8;
+}
+/*清除左右两边浮动*/
+.input-page{
+	clear:both;
+}
+/*输入框点击样式*/
+.click_input_bg{
+	background:url(../images/mosecick.png) no-repeat right center#fff;
+}
+/*文本水平垂直方向*/
+.input_text_left, .input_left {
+	text-align: left;
+}
+.input_text_right, .input_right {
+	text-align: right;
+}
+.text_center, .input_center {
+	text-align: center;
+}
+/*浮动层*/
+.float_left {
+	float: left;
+}
+.float_right {
+	float: right;
+}
+/*表格td宽度*/
+.table_width_10 {
+	width: 10%;
+}
+.table_width_15 {
+	width: 15%;
+}
+.table_width_20 {
+	width: 20%;
+}
+.table_width_60 {
+	width: 60%;
+}
+/*表格框架样式*/
+.table_padding {
+	padding: 0 10px 10px;
+}
+.common_table {
+	width: 100%;
+	border: 1px solid #d2ecfc;
+	border-top: 0;
+	border-left: 0;
+	font-size: 12px;
+	border-collapse: collapse
+}
+.common_table td, .common_table th {
+	border-left: 1px solid #d2ecfc;
+	border-top: 1px solid #d2ecfc;
+	height: 26px;
+}
+.common_table th, .common_title {
+	background: #e8f6ff;
+}
+.common_h2 h2 {
+	font-size: 14px;
+}
+.table_menu_bg {
+	background: #f7f7f7;
+}
+.table_menu_bg img {
+	float: left;
+	margin: 0 2px;
+}
+.common_table a {
+	color: #333;
+}
+.table_tr_padding {
+	padding: 8px;
+}
+/*输入框显示输入状态*/
+.input_error {
+	background-color: #fbefef;
+}
+/*---------------动态添加选项卡样式------------*/
+.tab_div {
+	height: 41px;
+}
+/*标签页选项处ul*/
+.tab_ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	padding-left: 0;
+	border-style: solid;
+	border-width: 0 0 1px 0;
+	height: 34px;
+	width: 100%;
+	margin-top: 7px;
+	border-color: #D4D4D4;
+}
+/*标签页ul下的li*/
+.tab_ul li {
+	float: left;
+	display: inline-block;
+	margin: 0 0 -1px 0;
+	padding: 0;
+	position: relative;
+	border: 0;
+}
+/*标签页ul下的li下的a*/
+.tab_ul li a.tab_a {
+	display: inline-block;
+	text-decoration: none;
+	text-align: center;
+	white-space: nowrap;
+	border-left-width: 0;
+	border-bottom-width: 1px;
+	border-right-width: 1px;
+	margin: 0;
+	padding: 0 20px;
+	border-style: solid;
+	height: 34px;
+	line-height: 32px;
+	border-color: #d3dbde;
+	border-top-width: 1px;
+	background: url(../images/tab_bg.png) repeat-x top left;
+	filter: none;
+	color: #777;
+}
+/*标签页ul下的选中的li下的a*/
+.tab_ul li.tab_li_selected a.tab_a {
+	height: 34px;
+	line-height: 32px;
+	border-bottom: 1px solid #ffffff;
+	border-top-color: #0d7cbd;
+	background-color: #def2fc;
+	color: #000;
+	background: linear-gradient(to bottom, #def2fc 0, #ffffff 100%);
+	background-repeat: repeat-x;
+	font-weight: bold;
+	outline: none;
+	border-top-width: 2px;
+	filter: none;
+}
+/*************************************************
+	Part End
+	添加区域输入字段、输入框、表格等公用样式 
+*************************************************/

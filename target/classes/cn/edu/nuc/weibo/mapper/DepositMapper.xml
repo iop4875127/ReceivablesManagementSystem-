@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.edu.nuc.weibo.dao.interfaces.DepositMapper">
+  <resultMap id="BaseResultMap" type="cn.edu.nuc.weibo.entity.Deposit">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="should_deposit" jdbcType="DECIMAL" property="shouldDeposit" />
+    <result column="area" jdbcType="INTEGER" property="area" />
+    <result column="remarks" jdbcType="VARCHAR" property="remarks" />
+    <result column="state" jdbcType="INTEGER" property="state" />
+    <result column="reality_deposit" jdbcType="DECIMAL" property="realityDeposit" />
+    <result column="privileges" jdbcType="INTEGER" property="privileges" />
+    <result column="customer_no" jdbcType="INTEGER" property="customerNo" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, should_deposit, area, remarks, state, reality_deposit, privileges, customer_no
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from bm_deposit
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from bm_deposit
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.edu.nuc.weibo.entity.Deposit">
+    insert into bm_deposit (id, should_deposit, area, 
+      remarks, state, reality_deposit, 
+      privileges, customer_no)
+    values (#{id,jdbcType=INTEGER}, #{shouldDeposit,jdbcType=DECIMAL}, #{area,jdbcType=INTEGER}, 
+      #{remarks,jdbcType=VARCHAR}, #{state,jdbcType=INTEGER}, #{realityDeposit,jdbcType=DECIMAL}, 
+      #{privileges,jdbcType=INTEGER}, #{customerNo,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.edu.nuc.weibo.entity.Deposit">
+    insert into bm_deposit
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="shouldDeposit != null">
+        should_deposit,
+      </if>
+      <if test="area != null">
+        area,
+      </if>
+      <if test="remarks != null">
+        remarks,
+      </if>
+      <if test="state != null">
+        state,
+      </if>
+      <if test="realityDeposit != null">
+        reality_deposit,
+      </if>
+      <if test="privileges != null">
+        privileges,
+      </if>
+      <if test="customerNo != null">
+        customer_no,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="shouldDeposit != null">
+        #{shouldDeposit,jdbcType=DECIMAL},
+      </if>
+      <if test="area != null">
+        #{area,jdbcType=INTEGER},
+      </if>
+      <if test="remarks != null">
+        #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null">
+        #{state,jdbcType=INTEGER},
+      </if>
+      <if test="realityDeposit != null">
+        #{realityDeposit,jdbcType=DECIMAL},
+      </if>
+      <if test="privileges != null">
+        #{privileges,jdbcType=INTEGER},
+      </if>
+      <if test="customerNo != null">
+        #{customerNo,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.edu.nuc.weibo.entity.Deposit">
+    update bm_deposit
+    <set>
+      <if test="shouldDeposit != null">
+        should_deposit = #{shouldDeposit,jdbcType=DECIMAL},
+      </if>
+      <if test="area != null">
+        area = #{area,jdbcType=INTEGER},
+      </if>
+      <if test="remarks != null">
+        remarks = #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null">
+        state = #{state,jdbcType=INTEGER},
+      </if>
+      <if test="realityDeposit != null">
+        reality_deposit = #{realityDeposit,jdbcType=DECIMAL},
+      </if>
+      <if test="privileges != null">
+        privileges = #{privileges,jdbcType=INTEGER},
+      </if>
+      <if test="customerNo != null">
+        customer_no = #{customerNo,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.edu.nuc.weibo.entity.Deposit">
+    update bm_deposit
+    set should_deposit = #{shouldDeposit,jdbcType=DECIMAL},
+      area = #{area,jdbcType=INTEGER},
+      remarks = #{remarks,jdbcType=VARCHAR},
+      state = #{state,jdbcType=INTEGER},
+      reality_deposit = #{realityDeposit,jdbcType=DECIMAL},
+      privileges = #{privileges,jdbcType=INTEGER},
+      customer_no = #{customerNo,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  
+    <select id="findByCustomerNo" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from bm_deposit
+    where customer_no = #{customerNo,jdbcType=INTEGER}
+  </select>
+</mapper>

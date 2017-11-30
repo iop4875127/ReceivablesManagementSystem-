@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.edu.nuc.weibo.dao.interfaces.PlusOrMinusMapper">
+<select id="findByProjectNo" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from pm_plus_or_minus
+    where projectNo = #{projectNO,jdbcType=VARCHAR}
+  </select>
+	
+
+
+  <resultMap id="BaseResultMap" type="cn.edu.nuc.weibo.entity.PlusOrMinus">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="project_no" jdbcType="VARCHAR" property="projectNo" />
+    <result column="contract_no" jdbcType="VARCHAR" property="contractNo" />
+    <result column="contract_period" jdbcType="INTEGER" property="contractPeriod" />
+    <result column="plus_or_minus_content" jdbcType="VARCHAR" property="plusOrMinusContent" />
+    <result column="plus_or_minus_money" jdbcType="DECIMAL" property="plusOrMinusMoney" />
+    <result column="plus_or_minus_date" jdbcType="DATE" property="plusOrMinusDate" />
+    <result column="state" jdbcType="INTEGER" property="state" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, project_no, contract_no, contract_period, plus_or_minus_content, plus_or_minus_money, 
+    plus_or_minus_date, state
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from pm_plus_or_minus
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from pm_plus_or_minus
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.edu.nuc.weibo.entity.PlusOrMinus">
+    insert into pm_plus_or_minus (id, project_no, contract_no, 
+      contract_period, plus_or_minus_content, plus_or_minus_money, 
+      plus_or_minus_date, state)
+    values (#{id,jdbcType=INTEGER}, #{projectNo,jdbcType=VARCHAR}, #{contractNo,jdbcType=VARCHAR}, 
+      #{contractPeriod,jdbcType=INTEGER}, #{plusOrMinusContent,jdbcType=VARCHAR}, #{plusOrMinusMoney,jdbcType=DECIMAL}, 
+      #{plusOrMinusDate,jdbcType=DATE}, #{state,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.edu.nuc.weibo.entity.PlusOrMinus">
+    insert into pm_plus_or_minus
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="projectNo != null">
+        project_no,
+      </if>
+      <if test="contractNo != null">
+        contract_no,
+      </if>
+      <if test="contractPeriod != null">
+        contract_period,
+      </if>
+      <if test="plusOrMinusContent != null">
+        plus_or_minus_content,
+      </if>
+      <if test="plusOrMinusMoney != null">
+        plus_or_minus_money,
+      </if>
+      <if test="plusOrMinusDate != null">
+        plus_or_minus_date,
+      </if>
+      <if test="state != null">
+        state,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="projectNo != null">
+        #{projectNo,jdbcType=VARCHAR},
+      </if>
+      <if test="contractNo != null">
+        #{contractNo,jdbcType=VARCHAR},
+      </if>
+      <if test="contractPeriod != null">
+        #{contractPeriod,jdbcType=INTEGER},
+      </if>
+      <if test="plusOrMinusContent != null">
+        #{plusOrMinusContent,jdbcType=VARCHAR},
+      </if>
+      <if test="plusOrMinusMoney != null">
+        #{plusOrMinusMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="plusOrMinusDate != null">
+        #{plusOrMinusDate,jdbcType=DATE},
+      </if>
+      <if test="state != null">
+        #{state,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.edu.nuc.weibo.entity.PlusOrMinus" >
+    update pm_plus_or_minus
+    <set>
+      <if test="projectNo != null">
+        project_no = #{projectNo,jdbcType=VARCHAR},
+      </if>
+      <if test="contractNo != null">
+        contract_no = #{contractNo,jdbcType=VARCHAR},
+      </if>
+      <if test="contractPeriod != null">
+        contract_period = #{contractPeriod,jdbcType=INTEGER},
+      </if>
+      <if test="plusOrMinusContent != null">
+        plus_or_minus_content = #{plusOrMinusContent,jdbcType=VARCHAR},
+      </if>
+      <if test="plusOrMinusMoney != null">
+        plus_or_minus_money = #{plusOrMinusMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="plusOrMinusDate != null">
+        plus_or_minus_date = #{plusOrMinusDate,jdbcType=DATE},
+      </if>
+      <if test="state != null">
+        state = #{state,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.edu.nuc.weibo.entity.PlusOrMinus">
+    update pm_plus_or_minus
+    set project_no = #{projectNo,jdbcType=VARCHAR},
+      contract_no = #{contractNo,jdbcType=VARCHAR},
+      contract_period = #{contractPeriod,jdbcType=INTEGER},
+      plus_or_minus_content = #{plusOrMinusContent,jdbcType=VARCHAR},
+      plus_or_minus_money = #{plusOrMinusMoney,jdbcType=DECIMAL},
+      plus_or_minus_date = #{plusOrMinusDate,jdbcType=DATE},
+      state = #{state,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

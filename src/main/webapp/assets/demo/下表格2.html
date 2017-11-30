@@ -1,0 +1,103 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>zos 主界面</title>
+<link rel="stylesheet" type="text/css" href="../css/easyui.css"/>
+<link rel="stylesheet" type="text/css" href="../css/right.css"/>
+
+<script type="text/javascript" src="../script/jquery.min.js"></script>
+<script type="text/javascript" src="../script/jquery.easyui.min.js"></script>
+<script>
+/* 窗口自适应 */
+        $(window).resize(function () {
+            $('#tt').datagrid('resize');
+			
+        });
+		
+</script>
+</head>
+
+<body class="easyui-layout" fit="true">
+<form action="">
+	 <div id="cc" data-options="region:'north'" border="false" class="norths">
+		 <div class="tools">
+            <ul class="toolbar">
+                <li class="tool-active"><a href="#"><span><img src="../images/icon/add_pro.png" /></span>货品添加</a></li>
+                        <li><span><img src="../images/icon/import.png"/></span>导入</li>
+                        <li><span><img src="../images/icon/edit.png" /></span>修改数量</li>
+                        <li><span><img src="../images/icon/del_pro.png" /></span>货品删除</li>
+                        <li><span><img src="../images/icon/delete.png" /></span>全部删除</li>
+                        <li><span><img src="../images/icon/zero_sch.png" /></span>计划为零</li>
+		                <li><span><img src="../images/icon/steel_price.png" /></span>钢材价格</li>
+        		        <li><span><img src="../images/icon/cal_num.png" /></span>计算数量</li>
+        		        <li><span><img src="../images/icon/edit.png" /></span>置为修改</li>
+        		        <li><span><img src="../images/icon/purchase.png" /></span>设置采购</li>
+            </ul>
+
+            <div class="clearfix"></div>
+        </div>     
+        
+    </div>
+    <div data-options="region:'south',split:true" border="false" style="height:60px; padding:10px 10px 0 10px;">
+        <div class="tip-page">
+            <div class="tip-page-info">
+                <strong>温馨提示：“<font color="#FF0000">*</font>”必填项！</strong>
+            </div>
+            <div class="tip_icon"><img src="../images/xiaolian.png" /></div>
+        </div>    
+     </div>
+    <div data-options="region:'center'" border="false"  class="reginon-margin" >
+    		<table class="easyui-datagrid"
+			data-options="
+            	remoteSort:false,
+                border:false,
+                striped:true,
+                pagination:true,
+                pageSize:10,
+            	fit:true,
+                fitColumns:true,
+				singleSelect: true,
+				rownumbers: true,
+				url: 'datagrid_data1.json',
+				method: 'get',
+				onLoadSuccess: function(){
+					$(this).datagrid('freezeRow',0).datagrid('freezeRow',1);
+				}
+			">
+		<thead data-options="frozen:true">
+			<tr>
+				<th data-options="field:'itemid',width:100">单号</th>
+				<th data-options="field:'productid',width:120">货品代码</th>
+				<th data-options="field:'productid1',width:120">货品名称</th>
+				<th data-options="field:'productid2',width:120">规格型号</th>
+				<th data-options="field:'productid3',width:120">本次需求</th>
+
+			</tr>
+		</thead>
+		<thead>
+			<tr>
+            	<th colspan="2" data-options="field:'productid4',width:90,align:'center'">库存</th>
+				<th colspan="2" data-options="field:'productid5',width:90,align:'center'">采购</th>
+				<th rowspan="2" data-options="field:'productid6',width:90">本次计划</th>
+				<th rowspan="2" data-options="field:'productid7',width:90">最小包装</th>
+                <th rowspan="2" data-options="field:'productid6',width:10">去年用量</th>
+                <th rowspan="2" data-options="field:'productid7',width:10">采购员</th>
+				<th rowspan="2" data-options="field:'attr1',width:230">Attribute</th>
+				<th rowspan="2" data-options="field:'status',width:60,align:'center'">Status</th>
+			</tr>
+ 			<tr>
+                <th align="center" data-options="field:'listprice1',width:45,align:'center'">K</th>
+                <th align="center" data-options="field:'unitcost1',width:45,align:'center'">Z</th>
+                <th align="center" data-options="field:'attr',width:45,align:'center'">K</th>
+                <th align="center" data-options="field:'status1',width:45,align:'center'">Z</th>
+          </tr>              
+		</thead>
+	</table>
+
+
+    
+    </div>
+ </form>
+</body>
+</html>

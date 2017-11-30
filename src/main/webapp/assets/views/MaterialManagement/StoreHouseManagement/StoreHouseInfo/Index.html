@@ -1,0 +1,362 @@
+﻿
+    <style>
+        .search_text_css {
+            width: 100px;
+            float: left;
+            height: 25px;
+            text-align: right;
+            padding-right: 8px;
+            line-height: 25px;
+        }
+
+        #editTest {
+            height: 20px;
+        }
+    </style>
+    <div data-options="region:'north'" border="false" class="right-north">
+        <ul class="tab_ul">
+
+            <!--<li>
+                <a href="@Url.Action(" assemblydimensionsetting", "AssemblyDimensionSetting" )" class="tab_a">
+                    <span class="tabs-title">装配尺寸设置</span><span class="tabs-icon"></span>
+                </a>
+            </li>
+            <li>
+                <a href="@Url.Action(" testparametersetting", "TestParameterSetting" )" class="tab_a">
+                    <span class="tabs-title">测试参数设置</span><span class="tabs-icon"></span>
+                </a>
+            </li>
+            <li class="tab_li_selected">
+                <a href="@Url.Action(" componentassemblysettings", "ComponentAssemblySettings" )" class="tab_a">
+                    <span class="tabs-title">零件组配设置</span><span class="tabs-icon"></span>
+                </a>
+            </li>-->
+
+        </ul>
+    </div>
+    <div data-options="region:'center'" border="false">
+        <div class="easyui-layout" fit="true">
+            <form action="">
+                <div id="cc" data-options="region:'north'" border="false" class="search">
+                    <div class="search-page">
+                        <div class="warp-from">
+                            <!--搜索区域-->
+
+                            <div class="search_div">
+                                <div class="search_text">产品名称</div>
+                                <div class="search_input">
+                                    <input type="text" id="txtSearchProductName" name="txtSearchProductName" class="input_style input_width input_height" />
+                                </div>
+                            </div>
+                            <div class="search_div">
+                                <div class="search_text">型号</div>
+                                <div class="search_input">
+                                    <input type="text" id="txtSearchProductModel" name="txtSearchProductModel" class="input_style input_width input_height" />
+                                </div>
+                            </div>
+
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                    <!--按钮区域-->
+                    <div class="tools">
+                        <ul class="toolbar">
+                            <li id="AddNew"><a href="#"><span><img src="~/images/icon/export.png" alt="新增" /></span>新增</a></li>
+                            <li id="View"><a href="#"><span><img src="~/images/icon/export.png" alt="查看" /></span>查看</a></li>
+                            <li id="Edit"><a href="#"><span><img src="~/images/icon/export.png" alt="修改" /></span>修改</a></li>
+                            <li id="Delete"><a href="#"><span><img src="~/images/icon/export.png" alt="删除" /></span>删除</a></li>
+                            <li id="ExportExcel"><a href="#"><span><img src="~/images/icon/export.png" alt="导出excel" /></span>导出excel</a></li>
+                        </ul>
+                        <ul class="toolbar1">
+                            <li><input name="button" type="button" value="点击查询" class="buttons" id="btnSearch" /></li>
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+                <div data-options="region:'center'" border="false" class="reginon-margin">
+                    <table class="easyui-datagrid table" id="tblComponentAssembly"></table>
+
+                </div>
+
+            </form>
+        </div>
+    </div>
+    <!--新增窗口-->
+    <div id="newModal" class="easyui-window" hidden>
+        <div class="tip-div">
+            <form id="addForm">
+                <div class="wrap-page">
+                    <h2 style="border-top: 0;">产品信息</h2>
+                    <div class="input-page">
+                        <div class="input-page">
+                            <div class="search_div">
+                                <div class="search_text_css"><span class="input-required ">*</span>&nbsp;产品名称</div>
+                                <div class="search_input">
+                                    <select class="input_style input_width input_height">
+                                        <option>两通电磁阀</option>
+                                        <option>三通电磁阀</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+
+                        <div class="input-page">
+                            <div class="search_div">
+                                <div class="input_text input_text_width_100 input_right">
+                                    <span class="input-required ">*</span>&nbsp;产品型号
+                                </div>
+                                <div class="search_input">
+                                    <input type="text" name="ProductModel" id="" class="input_style input_width2 input_height">
+                                </div>
+                            </div>
+
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="wrap-page common_h2">
+                    <h2 style="border-top: 0;">零件组成</h2>
+                    <div class="input-page table_padding">
+                        <table class="common_table" id="tblNewComponentPartsTable">
+                            <thead>
+                                <tr>
+                                    <th class="text_center"><span class="input-required ">*</span>零件名称</th>
+                                    <th class="text_center"><span class="input-required ">*</span>零件图号</th>
+                                    <th class="text_center"><span class="input-required ">*</span>零件数量</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <input id="txtNewComponentPartPartName0" name="ComponentParts[0].PartName" class="input_style" style="width: 100%; height: 100%; text-align: center; border: none" />
+                                    </td>
+                                    <td>
+                                        <input id="txtNewComponentPartPartDrawingNumber0" name="ComponentParts[0].PartDrawingNumber" class="input_style" style="width: 100%; height: 100%; text-align: center; border: none" />
+                                    </td>
+                                    <td>
+                                        <input id="txtNewComponentPartPartsQuantity0" name="ComponentParts[0].PartsQuantity" class="input_style" style="width: 100%; height: 100%; text-align: center; border: none" />
+                                    </td>
+                                    <td>
+                                        <a id="btnNewClearComponentPart" class='button-qx button-bc-width'>清空</a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <br />
+                        <div class="text_center">
+                            <a class="button-qx button-bc-width" id="newModalAddComponentPart">增加目录信息</a>
+                            <input type="hidden" id="newComponentPartItems" value="1" />
+                        </div>
+                    </div>
+                </div>
+                <div class="wrap-page">
+                    <h2 style="border-top: 0;">备注信息</h2>
+                    <div class="input-page">
+                        <div class="search_div">
+                            <div class="input_text input_text_width_80 input_right">
+                                <span class="input-required ">*</span>&nbsp;备注
+                            </div>
+                            <div class="search_input">
+                                <input type="text" name="Remarks" id="" class="input_style input_width2 input_height">
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+                <div class="wrap-page" style="border-bottom: none;">
+                    <div class="input-page">
+                        <div style="text-align: center;">
+                            <a id="saveNewComponentAssembly" class="button-bc button-bc-width"><i class="fa fa-floppy-o fa-fw"></i>&nbsp;确定保存</a>
+                            <a id="CancelNew" class="button-qx button-bc-width">取消</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="tip-page">
+                    <div class="tip-page-info">
+                        <strong>温馨提示：“<span class="input-required">*</span>”必填项！</strong>
+                    </div>
+                    <div class="tip_icon">
+                        <img src="~/images/xiaolian.png" alt="" />
+                    </div>
+                </div>
+
+            </form>
+        </div>
+
+    </div>
+    <!--查看窗口-->
+    <div id="ViewComponentAssemblyModal" class="easyui-window" hidden>
+        <div class="tip-div">
+            <form id="viewForm" class="tab_form">
+
+                <div class="wrap-page">
+                    <h2 style="border-top: 0;">产品信息</h2>
+                    <div class="input-page">
+                        <div class="input-page">
+                            <div class="search_div">
+                                <div class="search_text_css"><span class="input-required ">*</span>&nbsp;产品名称</div>
+                                <div class="search_input">
+                                    <select name="componentAssemblyModel.ProductName" id="txtViewProductName" class="input_style input_width input_height">
+                                        <option>两通电磁阀</option>
+                                        <option>三通电磁阀</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="input-page">
+                            <div class="search_div">
+                                <div class="input_text input_text_width_80 input_right">
+                                    <span class="input-required ">*</span>&nbsp;产品型号
+                                </div>
+                                <div class="search_input">
+                                    <input type="text" name="componentAssemblyModel.ProductModel" id="" class="input_style input_width2 input_height" readonly>
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="wrap-page common_h2">
+                    <h2 style="border-top: 0;">零件组成</h2>
+                    <div class="input-page table_padding">
+                        <table class="common_table" id="tblViewComponentParts">
+                            <thead>
+                                <tr>
+                                    <th class="text_center"><span class="input-required ">*</span>零件名称</th>
+                                    <th class="text_center"><span class="input-required ">*</span>零件图号</th>
+                                    <th class="text_center"><span class="input-required ">*</span>零件数量</th>
+                                </tr>
+                            </thead>
+                        </table>
+                        <br />
+                    </div>
+                </div>
+                <div class="wrap-page">
+                    <h2 style="border-top: 0;">备注信息</h2>
+                    <div class="input-page">
+                        <div class="search_div">
+                            <div class="input_text input_text_width_80 input_right">
+                                <span class="input-required ">*</span>&nbsp;备注
+                            </div>
+                            <div class="search_input">
+                                <input type="text" name="componentAssemblyModel.Remarks" id="" class="input_style input_width2 input_height" readonly>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+                <div class="tip-page">
+                    <div class="tip-page-info">
+                        <strong>温馨提示：“<span class="input-required">*</span>”必填项！</strong>
+                    </div>
+                    <div class="tip_icon">
+                        <img src="~/images/xiaolian.png" alt="" />
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="tip-button">
+            <button type="button" class="button-qx button-bc-width" id="CancelView">取消</button>
+        </div>
+    </div>
+    <!--编辑窗口-->
+    <div id="editComponentAssemblyModal" class="easyui-window" hidden>
+        <div class="tip-div">
+            <form id="editForm" class="tab_form">
+                <div class="wrap-page">
+                    <h2 style="border-top: 0;">产品信息</h2>
+                    <div class="input-page">
+                        <div class="input-page">
+                            <div class="search_div">
+                                <div class="input_text input_text_width_80 input_right">
+                                    <span class="input-required "></span>&nbsp;
+                                </div>
+                                <div class="search_input" hidden>
+                                    <input type="text" name="componentAssemblyModel.Id" id="txtEditId" class="input_style input_width2 input_height">
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="input-page">
+                            <div class="search_div">
+                                <div class="input_text input_text_width_80 input_right">
+                                    <span class="input-required ">*</span>&nbsp;产品名称
+                                </div>
+                                <div class="search_input">
+                                    <input type="text" name="componentAssemblyModel.ProductName" id="txtEditProductName" class="input_style input_width2 input_height">
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="input-page">
+                            <div class="search_div">
+                                <div class="input_text input_text_width_80 input_right">
+                                    <span class="input-required ">*</span>&nbsp;产品型号
+                                </div>
+                                <div class="search_input">
+                                    <input type="text" name="componentAssemblyModel.ProductModel" id="txtEditProductModel" class="input_style input_width2 input_height">
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="wrap-page common_h2">
+                    <h2 style="border-top: 0;">零件组成</h2>
+                    <div class="input-page table_padding">
+                        <table class="common_table" id="tblEditComponentParts">
+                            <thead>
+                                <tr>
+                                    <th class="text_center"><span class="input-required ">*</span>零件名称</th>
+                                    <th class="text_center"><span class="input-required ">*</span>零件图号</th>
+                                    <th class="text_center"><span class="input-required ">*</span>零件数量</th>
+                                </tr>
+                            </thead>
+                        </table>
+                        <div id="editTest"></div>
+                        <div class="text_center">
+                            <a class="button-qx button-bc-width" id="editModalEditComponentParts">增加目录信息</a>
+                            <input type="hidden" id="editcomponentPartsItems" value="1" />
+                        </div>
+                        <br />
+                    </div>
+                </div>
+                <div class="wrap-page">
+                    <h2 style="border-top: 0;">备注信息</h2>
+                    <div class="input-page">
+                        <div class="search_div">
+                            <div class="input_text input_text_width_80 input_right">
+                                <span class="input-required ">*</span>&nbsp;备注
+                            </div>
+                            <div class="search_input">
+                                <input type="text" name="componentAssemblyModel.Remarks" id="txtEditRemarks" class="input_style input_width2 input_height">
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+                <div class="tip-page">
+                    <div class="tip-page-info">
+                        <strong>温馨提示：“<span class="input-required">*</span>”必填项！</strong>
+                    </div>
+                    <div class="tip_icon">
+                        <img src="~/images/xiaolian.png" alt="" />
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="wrap-page" style="border-bottom: none;">
+            <div class="input-page">
+                <div style="text-align: center;">
+                    <a id="SaveEditComponentAssembly" class="button-bc button-bc-width"><i class="fa fa-floppy-o fa-fw"></i>&nbsp;确定保存</a>
+                    <a id="CancelEditComponentAssembly" class="button-qx button-bc-width">取消</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+<link href="~/Content/common.css" rel="stylesheet" />
+   
+

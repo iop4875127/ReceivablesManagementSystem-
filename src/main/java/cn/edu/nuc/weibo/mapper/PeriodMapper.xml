@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.edu.nuc.weibo.dao.interfaces.PeriodMapper">
+ 
+ <select id="queryByPage" parameterType="cn.edu.nuc.weibo.entity.searchObj.CustomerBaseInfoSearchObj" resultMap="BaseResultMap">
+		SELECT * FROM  bm_period 
+		 WHERE  state > 0 
+		<if test="periodLotNo != null">
+			AND period_lot_no = #{periodLotNo,jdbcType=INTEGER}  
+		</if>
+		<if test="contractNo != null">
+			AND contract_no LIKE CONCAT('%',#{contractNo},'%')  
+		</if>
+		<if test="startNumber != null">
+			<if test="endNumber != null">
+			LIMIT #{startNumber,jdbcType=INTEGER},#{endNumber,jdbcType=INTEGER}
+			</if>
+		</if>
+	</select>
+<!-- 	============================================== -->
+  <resultMap id="BaseResultMap" type="cn.edu.nuc.weibo.entity.Period">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="period_lot_no" jdbcType="INTEGER" property="periodLotNo" />
+    <result column="should_finish_the_task" jdbcType="VARCHAR" property="shouldFinishTheTask" />
+    <result column="period_homeworlk_date" jdbcType="DATE" property="periodHomeworlkDate" />
+    <result column="period_money" jdbcType="DECIMAL" property="periodMoney" />
+    <result column="period_payable_date" jdbcType="VARCHAR" property="periodPayableDate" />
+    <result column="state" jdbcType="INTEGER" property="state" />
+    <result column="reality_finish_the_task" jdbcType="VARCHAR" property="realityFinishTheTask" />
+    <result column="period_pay_reality_date" jdbcType="DATE" property="periodPayRealityDate" />
+    <result column="contract_no" jdbcType="VARCHAR" property="contractNo" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, period_lot_no, should_finish_the_task, period_homeworlk_date, period_money, period_payable_date, 
+    state, reality_finish_the_task, period_pay_reality_date, contract_no
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from bm_period
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from bm_period
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.edu.nuc.weibo.entity.Period">
+    insert into bm_period (id, period_lot_no, should_finish_the_task, 
+      period_homeworlk_date, period_money, period_payable_date, 
+      state, reality_finish_the_task, period_pay_reality_date, 
+      contract_no)
+    values (#{id,jdbcType=INTEGER}, #{periodLotNo,jdbcType=INTEGER}, #{shouldFinishTheTask,jdbcType=VARCHAR}, 
+      #{periodHomeworlkDate,jdbcType=DATE}, #{periodMoney,jdbcType=DECIMAL}, #{periodPayableDate,jdbcType=VARCHAR}, 
+      #{state,jdbcType=INTEGER}, #{realityFinishTheTask,jdbcType=VARCHAR}, #{periodPayRealityDate,jdbcType=DATE}, 
+      #{contractNo,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.edu.nuc.weibo.entity.Period">
+    insert into bm_period
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="periodLotNo != null">
+        period_lot_no,
+      </if>
+      <if test="shouldFinishTheTask != null">
+        should_finish_the_task,
+      </if>
+      <if test="periodHomeworlkDate != null">
+        period_homeworlk_date,
+      </if>
+      <if test="periodMoney != null">
+        period_money,
+      </if>
+      <if test="periodPayableDate != null">
+        period_payable_date,
+      </if>
+      <if test="state != null">
+        state,
+      </if>
+      <if test="realityFinishTheTask != null">
+        reality_finish_the_task,
+      </if>
+      <if test="periodPayRealityDate != null">
+        period_pay_reality_date,
+      </if>
+      <if test="contractNo != null">
+        contract_no,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="periodLotNo != null">
+        #{periodLotNo,jdbcType=INTEGER},
+      </if>
+      <if test="shouldFinishTheTask != null">
+        #{shouldFinishTheTask,jdbcType=VARCHAR},
+      </if>
+      <if test="periodHomeworlkDate != null">
+        #{periodHomeworlkDate,jdbcType=DATE},
+      </if>
+      <if test="periodMoney != null">
+        #{periodMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="periodPayableDate != null">
+        #{periodPayableDate,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null">
+        #{state,jdbcType=INTEGER},
+      </if>
+      <if test="realityFinishTheTask != null">
+        #{realityFinishTheTask,jdbcType=VARCHAR},
+      </if>
+      <if test="periodPayRealityDate != null">
+        #{periodPayRealityDate,jdbcType=DATE},
+      </if>
+      <if test="contractNo != null">
+        #{contractNo,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.edu.nuc.weibo.entity.Period">
+    update bm_period
+    <set>
+      <if test="periodLotNo != null">
+        period_lot_no = #{periodLotNo,jdbcType=INTEGER},
+      </if>
+      <if test="shouldFinishTheTask != null">
+        should_finish_the_task = #{shouldFinishTheTask,jdbcType=VARCHAR},
+      </if>
+      <if test="periodHomeworlkDate != null">
+        period_homeworlk_date = #{periodHomeworlkDate,jdbcType=DATE},
+      </if>
+      <if test="periodMoney != null">
+        period_money = #{periodMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="periodPayableDate != null">
+        period_payable_date = #{periodPayableDate,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null">
+        state = #{state,jdbcType=INTEGER},
+      </if>
+      <if test="realityFinishTheTask != null">
+        reality_finish_the_task = #{realityFinishTheTask,jdbcType=VARCHAR},
+      </if>
+      <if test="periodPayRealityDate != null">
+        period_pay_reality_date = #{periodPayRealityDate,jdbcType=DATE},
+      </if>
+      <if test="contractNo != null">
+        contract_no = #{contractNo,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.edu.nuc.weibo.entity.Period">
+    update bm_period
+    set period_lot_no = #{periodLotNo,jdbcType=INTEGER},
+      should_finish_the_task = #{shouldFinishTheTask,jdbcType=VARCHAR},
+      period_homeworlk_date = #{periodHomeworlkDate,jdbcType=DATE},
+      period_money = #{periodMoney,jdbcType=DECIMAL},
+      period_payable_date = #{periodPayableDate,jdbcType=VARCHAR},
+      state = #{state,jdbcType=INTEGER},
+      reality_finish_the_task = #{realityFinishTheTask,jdbcType=VARCHAR},
+      period_pay_reality_date = #{periodPayRealityDate,jdbcType=DATE},
+      contract_no = #{contractNo,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

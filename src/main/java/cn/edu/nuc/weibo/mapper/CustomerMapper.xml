@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.edu.nuc.weibo.dao.interfaces.CustomerMapper">
+<select id="queryByPage" parameterType="cn.edu.nuc.weibo.entity.searchObj.CustomerBaseInfoSearchObj" resultMap="BaseResultMap">
+		SELECT * FROM cm_customer 
+		WHERE state > 0  
+		<if test="customerName != null">
+			AND customer_name LIKE CONCAT('%',#{customerName},'%')  
+		</if>
+		<if test="projectNo != null">
+			AND project_no = #{projectNo,jdbcType=INTEGER} 
+		</if>
+		<if test="privileges != null">
+			AND privileges = #{privileges,jdbcType=INTEGER} 
+		</if>
+		<if test="startNumber != null">
+			<if test="endNumber != null">
+			LIMIT #{startNumber,jdbcType=INTEGER},#{endNumber,jdbcType=INTEGER}
+			</if>
+		</if>
+	</select>
+
+	<select id="queryCount" parameterType="cn.edu.nuc.weibo.entity.searchObj.CustomerBaseInfoSearchObj" resultType="java.lang.Integer">
+		SELECT COUNT(*) FROM(
+		SELECT * FROM cm_customer 
+		WHERE state > 0  
+		<if test="customerName != null">
+			AND customer_name LIKE CONCAT('%',#{customerName},'%')  
+		</if>
+		<if test="projectNo != null">
+			AND project_no = #{projectNo,jdbcType=INTEGER} 
+		</if>
+		<if test="privileges != null">
+			AND privileges = #{privileges,jdbcType=INTEGER} 
+		</if>
+		) AS h
+	</select>
+<!-- ==================================================================== -->
+	<resultMap id="BaseResultMap" type="cn.edu.nuc.weibo.entity.Customer">
+		<id column="id" jdbcType="INTEGER" property="id" />
+		<result column="customer_no" jdbcType="INTEGER" property="customerNo" />
+		<result column="customer_name" jdbcType="VARCHAR" property="customerName" />
+		<result column="contact" jdbcType="INTEGER" property="contact" />
+		<result column="address" jdbcType="VARCHAR" property="address" />
+		<result column="area" jdbcType="VARCHAR" property="area" />
+		<result column="home_type" jdbcType="INTEGER" property="homeType" />
+		<result column="sex" jdbcType="INTEGER" property="sex" />
+		<result column="project_no"  jdbcType="INTEGER" property="projectNo" />
+		<result column="state" jdbcType="INTEGER" property="state" />
+		<result column="privileges" jdbcType="INTEGER" property="privileges" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		id, customer_name, sex, contact, address, area, home_type,
+		project_no,
+		state, customer_no, privileges
+	</sql>
+	<select id="selectByPrimaryKey" parameterType="java.lang.Integer"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from cm_customer
+		where id = #{id,jdbcType=INTEGER}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from
+		cm_customer
+		where id = #{id,jdbcType=INTEGER}
+	</delete>
+	<insert id="insert" parameterType="cn.edu.nuc.weibo.entity.Customer">
+		insert into cm_customer (id,
+		customer_name, sex,
+		contact, address, area,
+		home_type, project_no,
+		state,
+		customer_no, privileges)
+		values (#{id,jdbcType=INTEGER},
+		#{customerName,jdbcType=VARCHAR},
+		#{sex,jdbcType=INTEGER},
+		#{contact,jdbcType=INTEGER}, #{address,jdbcType=VARCHAR},
+		#{area,jdbcType=VARCHAR},
+		#{homeType,jdbcType=INTEGER},
+		#{projectNo,jdbcType=INTEGER},
+		#{state,jdbcType=INTEGER},
+		#{customerNo,jdbcType=INTEGER}),
+		#{privileges,jdbcType=INTEGER})
+	</insert>
+	<insert id="insertSelective" parameterType="cn.edu.nuc.weibo.entity.Customer">
+		insert into cm_customer
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,
+			</if>
+			<if test="customerName != null">
+				customer_name,
+			</if>
+			<if test="sex != null">
+				sex,
+			</if>
+			<if test="contact != null">
+				contact,
+			</if>
+			<if test="address != null">
+				address,
+			</if>
+			<if test="area != null">
+				area,
+			</if>
+			<if test="homeType != null">
+				home_type,
+			</if>
+			<if test="projectNo != null">
+				project_no,
+			</if>
+			<if test="state != null">
+				state,
+			</if>
+			<if test="customerNo != null">
+				customer_no,
+			</if>
+			<if test="privileges != null">
+				privileges,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=INTEGER},
+			</if>
+			<if test="customerName != null">
+				#{customerName,jdbcType=VARCHAR},
+			</if>
+			<if test="sex != null">
+				#{sex,jdbcType=INTEGER},
+			</if>
+			<if test="contact != null">
+				#{contact,jdbcType=INTEGER},
+			</if>
+			<if test="address != null">
+				#{address,jdbcType=VARCHAR},
+			</if>
+			<if test="area != null">
+				#{area,jdbcType=VARCHAR},
+			</if>
+			<if test="homeType != null">
+				#{homeType,jdbcType=INTEGER},
+			</if>
+			<if test="projectNo != null">
+				#{projectNo,jdbcType=INTEGER},
+			</if>
+			<if test="state != null">
+				#{state,jdbcType=INTEGER},
+			</if>
+			<if test="customerNo != null">
+				#{customerNo,jdbcType=INTEGER},
+			</if>
+			<if test="privileges != null">
+				#{privileges,jdbcType=INTEGER},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="cn.edu.nuc.weibo.entity.Customer">
+		update cm_customer
+		<set>
+			<if test="customerName != null">
+				customer_name = #{customerName,jdbcType=VARCHAR},
+			</if>
+			<if test="sex != null">
+				sex = #{sex,jdbcType=INTEGER},
+			</if>
+			<if test="contact != null">
+				contact = #{contact,jdbcType=INTEGER},
+			</if>
+			<if test="address != null">
+				address = #{address,jdbcType=VARCHAR},
+			</if>
+			<if test="area != null">
+				area = #{area,jdbcType=VARCHAR},
+			</if>
+			<if test="homeType != null">
+				home_type = #{homeType,jdbcType=INTEGER},
+			</if>
+			<if test="projectNo != null">
+				project_no = #{projectNo,jdbcType=INTEGER},
+			</if>
+			<if test="state != null">
+				state = #{state,jdbcType=INTEGER},
+			</if>
+			<if test="customerNo != null">
+				customer_no = #{customerNo,jdbcType=INTEGER},
+			</if>
+			<if test="privileges != null">
+				privileges = #{privileges,jdbcType=INTEGER},
+			</if>
+		</set>
+		where id = #{id,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="cn.edu.nuc.weibo.entity.Customer">
+		update cm_customer
+		set customer_name = #{customerName,jdbcType=VARCHAR},
+		sex =
+		#{sex,jdbcType=INTEGER},
+		contact = #{contact,jdbcType=INTEGER},
+		address
+		= #{address,jdbcType=VARCHAR},
+		area = #{area,jdbcType=VARCHAR},
+		home_type = #{homeType,jdbcType=INTEGER},
+		project_no =
+		#{projectNo,jdbcType=INTEGER},
+		state = #{state,jdbcType=INTEGER},
+		customer_no = #{customerNo,jdbcType=INTEGER},
+		privileges = #{privileges,jdbcType=INTEGER}
+		where id =
+		#{id,jdbcType=INTEGER}
+	</update>
+
+	
+
+</mapper>

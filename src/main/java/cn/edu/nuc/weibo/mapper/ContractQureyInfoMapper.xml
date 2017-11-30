@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.edu.nuc.weibo.dao.interfaces.BusinessManagement.ContractManagement.ContractInfo.ContractQureyInfoMapper">
+
+	<select id="queryByPage" parameterType="cn.edu.nuc.weibo.entity.searchObj.ContractInfoSearchObj" resultMap="BaseResultMap">
+		SELECT
+	a.contract_no,
+	a.signing_date,
+	a.contract_cost,
+	a.contract_violate,
+	a.remarks,
+	b.customer_no,
+	b.customer_name,
+	b.contact,
+	b.address,
+	b.area,
+	b.home_type,
+	c.project_no,
+	c.project_manager,
+	c.project_department,
+	d.should_deposit,
+	e.period_lot_no,
+	e.should_finish_the_task,
+	e.period_homeworlk_date,
+	e.period_money
+FROM
+	bm_contract AS a
+LEFT JOIN cm_customer AS b ON a.customs_no = b.customer_no
+LEFT JOIN pm_project AS c ON b.project_no = c.project_no
+LEFT JOIN bm_deposit AS d ON b.customer_no = d.customer_no
+LEFT JOIN bm_period AS e ON a.contract_no = e.contract_no
+WHERE
+	a.state > 0 AND b.state > 0 AND c.state > 0 AND c.state > 0 AND d.state > 0 AND e.state > 0
+	<if test="contractNo != null">
+			AND a.contract_no = #{contractNo, jdbcType=INTEGER}  
+		</if>
+		<if test="customerName != null">
+			AND b.customer_name LIKE CONCAT('%',#{customerName},'%') 
+		</if>
+		<if test="projectNo != null">
+			AND c.project_no LIKE CONCAT('%',#{projectNo},'%') 
+		</if>
+		<if test="projectManager != null">
+			AND c.project_manager LIKE CONCAT('%',#{projectManager},'%') 
+		</if>
+		<if test="startNumber != null">
+			<if test="endNumber != null">
+			LIMIT #{startNumber,jdbcType=INTEGER},#{endNumber,jdbcType=INTEGER}
+			</if>
+		</if>
+	</select>
+
+	<resultMap id="BaseResultMap" type="cn.edu.nuc.weibo.entity.VO.BusinessManagement.ContractManagement.ContractInfo.ContractPageVO">
+		<result column="contract_no" jdbcType="VARCHAR" property="contractNo" />
+		<result column="signing_date" jdbcType="DATE" property="signingDate" />
+		<result column="contract_cost" jdbcType="DECIMAL" property="contractCost" />
+		<result column="contract_violate" jdbcType="VARCHAR" property="contractViolate" />
+		<result column="remarks" jdbcType="VARCHAR" property="remarks" />
+
+		<result column="customer_no" jdbcType="INTEGER" property="customerNo" />
+		<result column="customer_name" jdbcType="VARCHAR" property="customerName" />
+		<result column="contact" jdbcType="INTEGER" property="contact" />
+		<result column="address" jdbcType="VARCHAR" property="address" />
+		<result column="area" jdbcType="VARCHAR" property="area" />
+		<result column="home_type" jdbcType="INTEGER" property="homeType" />
+
+		<result column="project_no" jdbcType="VARCHAR" property="projectNo" />
+		<result column="project_manager" jdbcType="VARCHAR" property="projectManager" />
+		<result column="project_department" jdbcType="VARCHAR" property="projectDepartment" />
+
+		<result column="should_deposit" jdbcType="DECIMAL" property="shouldDeposit" />
+
+		<result column="period_lot_no" jdbcType="INTEGER" property="periodLotNo" />
+		<result column="should_finish_the_task" jdbcType="VARCHAR" property="shouldFinishTheTask" />
+		<result column="period_homeworlk_date" jdbcType="DATE" property="periodHomeworlkDate" />
+		<result column="period_money" jdbcType="DECIMAL" property="periodMoney" />
+	</resultMap>
+</mapper>

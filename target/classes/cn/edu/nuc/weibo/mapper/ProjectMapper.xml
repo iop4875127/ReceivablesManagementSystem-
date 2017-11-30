@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.edu.nuc.weibo.dao.interfaces.ProjectMapper">
+  <resultMap id="BaseResultMap" type="cn.edu.nuc.weibo.entity.Project">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="project_no" jdbcType="VARCHAR" property="projectNo" />
+    <result column="project_manager" jdbcType="VARCHAR" property="projectManager" />
+    <result column="project_department" jdbcType="VARCHAR" property="projectDepartment" />
+    <result column="state" jdbcType="VARCHAR" property="state" />
+    <result column="complete_date" jdbcType="DATE" property="completeDate" />
+    <result column="completion_date" jdbcType="DATE" property="completionDate" />
+    <result column="contract_no" jdbcType="VARCHAR" property="contractNo" />
+    <result column="commission" jdbcType="VARCHAR" property="commission" />
+    <result column="project_address" jdbcType="VARCHAR" property="projectAddress" />
+    <result column="contract_period" jdbcType="INTEGER" property="contractPeriod" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, project_no, project_manager, project_department, state, complete_date, completion_date, 
+    contract_no, commission, project_address, contract_period
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from pm_project
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from pm_project
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.edu.nuc.weibo.entity.Project">
+    insert into pm_project (id, project_no, project_manager, 
+      project_department, state, complete_date, 
+      completion_date, contract_no, commission, 
+      project_address, contract_period)
+    values (#{id,jdbcType=INTEGER}, #{projectNo,jdbcType=VARCHAR}, #{projectManager,jdbcType=VARCHAR}, 
+      #{projectDepartment,jdbcType=VARCHAR}, #{state,jdbcType=VARCHAR}, #{completeDate,jdbcType=DATE}, 
+      #{completionDate,jdbcType=DATE}, #{contractNo,jdbcType=VARCHAR}, #{commission,jdbcType=VARCHAR}, 
+      #{projectAddress,jdbcType=VARCHAR}, #{contractPeriod,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.edu.nuc.weibo.entity.Project">
+    insert into pm_project
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="projectNo != null">
+        project_no,
+      </if>
+      <if test="projectManager != null">
+        project_manager,
+      </if>
+      <if test="projectDepartment != null">
+        project_department,
+      </if>
+      <if test="state != null">
+        state,
+      </if>
+      <if test="completeDate != null">
+        complete_date,
+      </if>
+      <if test="completionDate != null">
+        completion_date,
+      </if>
+      <if test="contractNo != null">
+        contract_no,
+      </if>
+      <if test="commission != null">
+        commission,
+      </if>
+      <if test="projectAddress != null">
+        project_address,
+      </if>
+      <if test="contractPeriod != null">
+        contract_period,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="projectNo != null">
+        #{projectNo,jdbcType=VARCHAR},
+      </if>
+      <if test="projectManager != null">
+        #{projectManager,jdbcType=VARCHAR},
+      </if>
+      <if test="projectDepartment != null">
+        #{projectDepartment,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null">
+        #{state,jdbcType=VARCHAR},
+      </if>
+      <if test="completeDate != null">
+        #{completeDate,jdbcType=DATE},
+      </if>
+      <if test="completionDate != null">
+        #{completionDate,jdbcType=DATE},
+      </if>
+      <if test="contractNo != null">
+        #{contractNo,jdbcType=VARCHAR},
+      </if>
+      <if test="commission != null">
+        #{commission,jdbcType=VARCHAR},
+      </if>
+      <if test="projectAddress != null">
+        #{projectAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="contractPeriod != null">
+        #{contractPeriod,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.edu.nuc.weibo.entity.Project">
+    update pm_project
+    <set>
+      <if test="projectNo != null">
+        project_no = #{projectNo,jdbcType=VARCHAR},
+      </if>
+      <if test="projectManager != null">
+        project_manager = #{projectManager,jdbcType=VARCHAR},
+      </if>
+      <if test="projectDepartment != null">
+        project_department = #{projectDepartment,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null">
+        state = #{state,jdbcType=VARCHAR},
+      </if>
+      <if test="completeDate != null">
+        complete_date = #{completeDate,jdbcType=DATE},
+      </if>
+      <if test="completionDate != null">
+        completion_date = #{completionDate,jdbcType=DATE},
+      </if>
+      <if test="contractNo != null">
+        contract_no = #{contractNo,jdbcType=VARCHAR},
+      </if>
+      <if test="commission != null">
+        commission = #{commission,jdbcType=VARCHAR},
+      </if>
+      <if test="projectAddress != null">
+        project_address = #{projectAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="contractPeriod != null">
+        contract_period = #{contractPeriod,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.edu.nuc.weibo.entity.Project">
+    update pm_project
+    set project_no = #{projectNo,jdbcType=VARCHAR},
+      project_manager = #{projectManager,jdbcType=VARCHAR},
+      project_department = #{projectDepartment,jdbcType=VARCHAR},
+      state = #{state,jdbcType=VARCHAR},
+      complete_date = #{completeDate,jdbcType=DATE},
+      completion_date = #{completionDate,jdbcType=DATE},
+      contract_no = #{contractNo,jdbcType=VARCHAR},
+      commission = #{commission,jdbcType=VARCHAR},
+      project_address = #{projectAddress,jdbcType=VARCHAR},
+      contract_period = #{contractPeriod,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  
+  
+   <select id="findByProjectNo" parameterType="java.lang.String" resultType="java.lang.String">
+    select 
+    contract_no
+    from pm_project
+    where project_no = #{projectNo,jdbcType=VARCHAR}
+  </select>
+  
+     <select id="findByContractNo" parameterType="java.lang.String" resultType="java.lang.String">
+    select 
+    project_no
+    from pm_project
+    where contract_no = #{contractNo,jdbcType=VARCHAR}
+  </select>
+</mapper>

@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.edu.nuc.weibo.dao.interfaces.ReceiptDetailMapper">
+  <resultMap id="BaseResultMap" type="cn.edu.nuc.weibo.entity.ReceiptDetail">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="project_no" jdbcType="VARCHAR" property="projectNo" />
+    <result column="pay_name" jdbcType="VARCHAR" property="payName" />
+    <result column="pay_contact" jdbcType="VARCHAR" property="payContact" />
+    <result column="receipt_no" jdbcType="VARCHAR" property="receiptNo" />
+    <result column="receipt_name" jdbcType="VARCHAR" property="receiptName" />
+    <result column="receipt_way" jdbcType="VARCHAR" property="receiptWay" />
+    <result column="in_fact_money" jdbcType="DECIMAL" property="inFactMoney" />
+    <result column="payable_money" jdbcType="DECIMAL" property="payableMoney" />
+    <result column="receipt_date" jdbcType="DATE" property="receiptDate" />
+    <result column="number_of_periods" jdbcType="INTEGER" property="numberOfPeriods" />
+    <result column="remarks" jdbcType="VARCHAR" property="remarks" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, project_no, pay_name, pay_contact, receipt_no, receipt_name, receipt_way, in_fact_money, 
+    payable_money, receipt_date, number_of_periods, remarks
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from fm_receipt_detail
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from fm_receipt_detail
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.edu.nuc.weibo.entity.ReceiptDetail">
+    insert into fm_receipt_detail (id, project_no, pay_name, 
+      pay_contact, receipt_no, receipt_name, 
+      receipt_way, in_fact_money, payable_money, 
+      receipt_date, number_of_periods, remarks
+      )
+    values (#{id,jdbcType=INTEGER}, #{projectNo,jdbcType=VARCHAR}, #{payName,jdbcType=VARCHAR}, 
+      #{payContact,jdbcType=VARCHAR}, #{receiptNo,jdbcType=VARCHAR}, #{receiptName,jdbcType=VARCHAR}, 
+      #{receiptWay,jdbcType=VARCHAR}, #{inFactMoney,jdbcType=DECIMAL}, #{payableMoney,jdbcType=DECIMAL}, 
+      #{receiptDate,jdbcType=DATE}, #{numberOfPeriods,jdbcType=INTEGER}, #{remarks,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="cn.edu.nuc.weibo.entity.ReceiptDetail">
+    insert into fm_receipt_detail
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="projectNo != null">
+        project_no,
+      </if>
+      <if test="payName != null">
+        pay_name,
+      </if>
+      <if test="payContact != null">
+        pay_contact,
+      </if>
+      <if test="receiptNo != null">
+        receipt_no,
+      </if>
+      <if test="receiptName != null">
+        receipt_name,
+      </if>
+      <if test="receiptWay != null">
+        receipt_way,
+      </if>
+      <if test="inFactMoney != null">
+        in_fact_money,
+      </if>
+      <if test="payableMoney != null">
+        payable_money,
+      </if>
+      <if test="receiptDate != null">
+        receipt_date,
+      </if>
+      <if test="numberOfPeriods != null">
+        number_of_periods,
+      </if>
+      <if test="remarks != null">
+        remarks,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="projectNo != null">
+        #{projectNo,jdbcType=VARCHAR},
+      </if>
+      <if test="payName != null">
+        #{payName,jdbcType=VARCHAR},
+      </if>
+      <if test="payContact != null">
+        #{payContact,jdbcType=VARCHAR},
+      </if>
+      <if test="receiptNo != null">
+        #{receiptNo,jdbcType=VARCHAR},
+      </if>
+      <if test="receiptName != null">
+        #{receiptName,jdbcType=VARCHAR},
+      </if>
+      <if test="receiptWay != null">
+        #{receiptWay,jdbcType=VARCHAR},
+      </if>
+      <if test="inFactMoney != null">
+        #{inFactMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="payableMoney != null">
+        #{payableMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="receiptDate != null">
+        #{receiptDate,jdbcType=DATE},
+      </if>
+      <if test="numberOfPeriods != null">
+        #{numberOfPeriods,jdbcType=INTEGER},
+      </if>
+      <if test="remarks != null">
+        #{remarks,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.edu.nuc.weibo.entity.ReceiptDetail">
+    update fm_receipt_detail
+    <set>
+      <if test="projectNo != null">
+        project_no = #{projectNo,jdbcType=VARCHAR},
+      </if>
+      <if test="payName != null">
+        pay_name = #{payName,jdbcType=VARCHAR},
+      </if>
+      <if test="payContact != null">
+        pay_contact = #{payContact,jdbcType=VARCHAR},
+      </if>
+      <if test="receiptNo != null">
+        receipt_no = #{receiptNo,jdbcType=VARCHAR},
+      </if>
+      <if test="receiptName != null">
+        receipt_name = #{receiptName,jdbcType=VARCHAR},
+      </if>
+      <if test="receiptWay != null">
+        receipt_way = #{receiptWay,jdbcType=VARCHAR},
+      </if>
+      <if test="inFactMoney != null">
+        in_fact_money = #{inFactMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="payableMoney != null">
+        payable_money = #{payableMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="receiptDate != null">
+        receipt_date = #{receiptDate,jdbcType=DATE},
+      </if>
+      <if test="numberOfPeriods != null">
+        number_of_periods = #{numberOfPeriods,jdbcType=INTEGER},
+      </if>
+      <if test="remarks != null">
+        remarks = #{remarks,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.edu.nuc.weibo.entity.ReceiptDetail">
+    update fm_receipt_detail
+    set project_no = #{projectNo,jdbcType=VARCHAR},
+      pay_name = #{payName,jdbcType=VARCHAR},
+      pay_contact = #{payContact,jdbcType=VARCHAR},
+      receipt_no = #{receiptNo,jdbcType=VARCHAR},
+      receipt_name = #{receiptName,jdbcType=VARCHAR},
+      receipt_way = #{receiptWay,jdbcType=VARCHAR},
+      in_fact_money = #{inFactMoney,jdbcType=DECIMAL},
+      payable_money = #{payableMoney,jdbcType=DECIMAL},
+      receipt_date = #{receiptDate,jdbcType=DATE},
+      number_of_periods = #{numberOfPeriods,jdbcType=INTEGER},
+      remarks = #{remarks,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  
+  <select id="queryByPage" parameterType="cn.edu.nuc.weibo.entity.searchObj.ReceiptDetailInfoSearchObj" resultMap="BaseResultMap">
+		SELECT * FROM fm_receipt_detail 
+		WHERE state > 0  
+		<if test="projectNo != null">
+			AND project_no LIKE CONCAT('%',#{projectNo},'%')  
+		</if>
+		<if test="payName != null">
+			AND pay_name LIKE CONCAT('%',#{payName},'%')  
+		</if>
+		<if test="startNumber != null">
+			<if test="endNumber != null">
+			LIMIT #{startNumber,jdbcType=INTEGER},#{endNumber,jdbcType=INTEGER}
+			</if>
+		</if>
+	</select>
+	
+	  <select id="queryCount" parameterType="cn.edu.nuc.weibo.entity.searchObj.ReceiptDetailInfoSearchObj" resultType="java.lang.Integer">
+			SELECT COUNT(*) FROM(
+		SELECT * FROM fm_receipt_detail 
+		WHERE state > 0  
+		<if test="projectNo != null">
+			AND project_no LIKE CONCAT('%',#{projectNo},'%')  
+		</if>
+		<if test="payName != null">
+			AND pay_name LIKE CONCAT('%',#{payName},'%')  
+		</if>
+		) AS h
+	</select>
+	
+	<!-- =============================================================== -->
+	<resultMap id="BaseResultMap1" type="cn.edu.nuc.weibo.entity.ReceiptDetail">
+		<id column="id" jdbcType="INTEGER" property="id" />
+		<result column="project_no" jdbcType="VARCHAR" property="projectNo" />
+		<result column="pay_name" jdbcType="VARCHAR" property="payName" />
+		<result column="pay_contact" jdbcType="VARCHAR" property="payContact" />
+		<result column="receipt_no" jdbcType="VARCHAR" property="receiptNo" />
+		<result column="receipt_name" jdbcType="VARCHAR" property="receiptName" />
+		<result column="receipt_way" jdbcType="VARCHAR" property="receiptWay" />
+		<result column="in_fact_money" jdbcType="DECIMAL" property="inFactMoney" />
+		<result column="payable_money" jdbcType="DECIMAL" property="payableMoney" />
+		<result column="receipt_date" jdbcType="DATE" property="receiptDate" />
+		<result column="number_of_periods" jdbcType="INTEGER" property="numberOfPeriods" />
+		<result column="remarks" jdbcType="VARCHAR" property="remarks" />
+		<result column="contract_no" jdbcType="VARCHAR" property="contractNO" />
+	</resultMap>
+	<select id="queryByPage1"
+		parameterType="cn.edu.nuc.weibo.entity.searchObj.ReceiptDetailInfoSearchObj"
+		resultMap="BaseResultMap1">
+		SELECT
+		a.*,
+		b.contract_no
+		FROM
+		fm_receipt_detail AS a
+		LEFT JOIN pm_project AS b ON a.project_no = b.project_no
+		WHERE a.state > 0 AND b.state > 0
+		<if test="projectNo != null">
+			AND a.project_no LIKE CONCAT('%',#{projectNo},'%')
+		</if>
+		<if test="contractNo != null">
+			AND b.contract_no LIKE CONCAT('%',#{contractNo},'%')
+		</if>
+		<if test="startNumber != null">
+			<if test="endNumber != null">
+				LIMIT #{startNumber,jdbcType=INTEGER},#{endNumber,jdbcType=INTEGER}
+			</if>
+		</if>
+	</select>
+
+	<select id="queryCount1"
+		parameterType="cn.edu.nuc.weibo.entity.searchObj.ReceiptDetailInfoSearchObj"
+		resultType="java.lang.Integer">
+		SELECT COUNT(*) FROM(
+		SELECT
+		a.*,
+		b.contract_no
+		FROM
+		fm_receipt_detail AS a
+		LEFT JOIN pm_project AS b ON a.project_no = b.project_no
+		WHERE a.state > 0 AND b.state > 0
+		<if test="projectNo != null">
+			AND a.project_no LIKE CONCAT('%',#{projectNo},'%')
+		</if>
+		<if test="contractNo != null">
+			AND b.contract_no LIKE CONCAT('%',#{contractNo},'%')
+		</if>
+		) AS h
+	</select>
+</mapper>

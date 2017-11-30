@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper
+	namespace="cn.edu.nuc.weibo.dao.interfaces.ProjectManagement.ProjectMaterialManagement.ProjectMaterialInfo.ProjectQureyInfoMapper">
+	<select id="queryByPage"
+		parameterType="cn.edu.nuc.weibo.entity.searchObj.ProjectInfoSearchObj"
+		resultMap="BaseResultMap">
+		SELECT
+		a.id,
+		a.project_no,
+		a.project_manager,
+		a.project_department,
+		a.state,
+		a.complete_date,
+		a.completion_date,
+		a.contract_no,
+		a.commission,
+		a.project_address,
+		a.contract_period,
+		c.customer_name
+		FROM
+		pm_project AS a
+		LEFT JOIN bm_contract AS b ON a.contract_no = b.contract_no
+		LEFT JOIN
+		cm_customer AS c ON b.customs_no = c.customer_no
+		WHERE a.state > 0 AND 
+		b.state > 0 AND c.state > 0 
+		<if test="contractNo != null"> 
+		AND a.contract_no = #{contractNo,jdbcType=VARCHAR} 
+		</if>
+		<if test="projectNo != null"> 
+		 AND a.project_no = #{projectNo,jdbcType=VARCHAR}
+		</if>
+		<if test="projectManager != null"> 
+		AND a.project_manager LIKE #{projectManager,jdbcType=VARCHAR} 
+		</if>
+		<if test="customerName != null"> 
+		 AND c.customer_name LIKE #{customerName,jdbcType=VARCHAR} 
+		</if>
+		<if test="projectAddress != null"> 
+		 AND a.project_address LIKE #{projectAddress,jdbcType=VARCHAR} 
+		</if>
+		<if test="startNumber != null">
+			<if test="endNumber != null">
+				LIMIT #{startNumber,jdbcType=INTEGER},#{endNumber,jdbcType=INTEGER}
+			</if>
+		</if>
+
+
+	</select>
+
+	<resultMap id="BaseResultMap"
+		type="cn.edu.nuc.weibo.entity.VO.ProjectManagement.ProjectMaterialManagement.ProjectMaterialInfo.ProjectPageVO">
+		<id column="id" jdbcType="INTEGER" property="id" />
+		<result column="project_no" jdbcType="VARCHAR" property="projectNo" />
+		<result column="project_manager" jdbcType="VARCHAR" property="projectManager" />
+		<result column="project_department" jdbcType="VARCHAR"
+			property="projectDepartment" />
+		<result column="state" jdbcType="VARCHAR" property="state" />
+		<result column="complete_date" jdbcType="DATE" property="completeDate" />
+		<result column="completion_date" jdbcType="DATE" property="completionDate" />
+		<result column="contract_no" jdbcType="VARCHAR" property="contractNo" />
+		<result column="commission" jdbcType="VARCHAR" property="commission" />
+		<result column="project_address" jdbcType="VARCHAR" property="projectAddress" />
+		<result column="contract_period" jdbcType="INTEGER" property="contractPeriod" />
+		<result column="customer_name" jdbcType="VARCHAR" property="customerName" />
+	</resultMap>
+	
+	<select id="queryCount"
+		parameterType="cn.edu.nuc.weibo.entity.searchObj.ProjectInfoSearchObj">
+		SELECT COUNT(*) FROM(
+		SELECT
+		a.id,
+		a.project_no,
+		a.project_manager,
+		a.project_department,
+		a.state,
+		a.complete_date,
+		a.completion_date,
+		a.contract_no,
+		a.commission,
+		a.project_address,
+		a.contract_period,
+		c.customer_name
+		FROM
+		pm_project AS a
+		LEFT JOIN bm_contract AS b ON a.contract_no = b.contract_no
+		LEFT JOIN
+		cm_customer AS c ON b.customs_no = c.customer_no
+		WHERE a.state > 0 AND 
+		b.state > 0 AND c.state > 0 
+		<if test="contractNo != null"> 
+		AND a.contract_no = #{contractNo,jdbcType=VARCHAR} 
+		</if>
+		<if test="projectNo != null"> 
+		 AND a.project_no = #{projectNo,jdbcType=VARCHAR}
+		</if>
+		<if test="projectManager != null"> 
+		AND a.project_manager LIKE #{projectManager,jdbcType=VARCHAR} 
+		</if>
+		<if test="customerName != null"> 
+		 AND c.customer_name LIKE #{customerName,jdbcType=VARCHAR} 
+		</if>
+		<if test="projectAddress != null"> 
+		 AND a.project_address LIKE #{projectAddress,jdbcType=VARCHAR} 
+		</if>
+		) AS h
+
+
+	</select>
+</mapper>
